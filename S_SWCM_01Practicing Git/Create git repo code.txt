@@ -1,0 +1,4 @@
+git init Sprints_tasks
+git remote add origin https://github.com/arafaarafa/Sprints_Tasks.git
+git branch -m master main
+git pull --rebase origin main
