@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1679924559 source:c:\users\arafa\desktop\test_git\game_x_o\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+
