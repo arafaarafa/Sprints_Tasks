@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1680123867 source:c:\users\arafa\desktop\test_git\longestconsecutivesubsequence\main.c
+	<stdio.h>
+	<stdlib.h>
+	"insertion_sort.h"
+
+1680115191 source:c:\users\arafa\desktop\test_git\longestconsecutivesubsequence\insertion_sort.c
+	"insertion_sort.h"
+
+1680123851 c:\users\arafa\desktop\test_git\longestconsecutivesubsequence\insertion_sort.h
+	<stddef.h>
+	"std_types.h"
+
+1680012300 c:\users\arafa\desktop\test_git\longestconsecutivesubsequence\std_types.h
+
+1680017421 source:c:\users\arafa\desktop\test_git\longestconsecutivesubsequence\lcs.c
+	"LCS.h"
+
+1680123849 c:\users\arafa\desktop\test_git\longestconsecutivesubsequence\lcs.h
+	"std_types.h"
+	"insertion_sort.h"
+
