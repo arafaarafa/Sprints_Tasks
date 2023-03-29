@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1679957198 source:c:\users\arafa\desktop\test_git\balanced_parentheses\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Stack.h"
+	"balancedparantheths.h"
+
+1679952873 source:c:\users\arafa\desktop\test_git\balanced_parentheses\stack.c
+	"stack.h"
+
+1679945855 c:\users\arafa\desktop\test_git\balanced_parentheses\stack.h
+	"std_types.h"
+
+1679945828 c:\users\arafa\desktop\test_git\balanced_parentheses\std_types.h
+
+1679953993 source:c:\users\arafa\desktop\test_git\balanced_parentheses\balancedparantheths.c
+	"balancedparantheths.h"
+
+1679952873 c:\users\arafa\desktop\test_git\balanced_parentheses\balancedparantheths.h
+	"Stack.h"
+	"std_types.h"
+
