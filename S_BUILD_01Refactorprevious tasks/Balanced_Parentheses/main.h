@@ -6,5 +6,5 @@
 #include <stdlib.h>
 
 #include "Stack.h"
-#include "balancedparantheths.h"
+#include "balanced.h"
 #endif // MAIN_H

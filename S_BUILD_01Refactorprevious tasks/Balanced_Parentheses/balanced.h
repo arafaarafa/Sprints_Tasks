@@ -4,8 +4,8 @@
 #include "Stack.h"
 #include "std_types.h"
 
-#define DIFF_BETWEEN_(_) 1
-#define DIFF_BETWEEN_{_} 2
+#define DIFF_BETWEEN_ASCII_ROUND_BRACKETS 1
+#define DIFF_BETWEEN_ASCII_CURLY_BRACKETS 2
 
 
 

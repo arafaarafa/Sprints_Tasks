@@ -1,4 +1,4 @@
-#include "balancedparantheths.h"
+#include "balanced.h"
 
 int8_t isBalancedParanthethes(uint8_t *expression){
     int8_t ret_state = -2;
@@ -18,7 +18,7 @@ int8_t isBalancedParanthethes(uint8_t *expression){
                 uint8_t tmp ;
                 uint8_t stack_state ;
                 stack_state = pop(&stack, &tmp);
-                if((stack_state !=-2) && (((tmp+DIFF_BETWEEN_(_)) == expression[iterator])||((tmp+DIFF_BETWEEN_{_}) == expression[iterator]))){
+                if((stack_state !=-2) && (((tmp+DIFF_BETWEEN_ASCII_ROUND_BRACKETS) == expression[iterator])||((tmp+DIFF_BETWEEN_ASCII_CURLY_BRACKETS) == expression[iterator]))){
                     ret_state = 0;
                 }else{
                     ret_state = -1;
