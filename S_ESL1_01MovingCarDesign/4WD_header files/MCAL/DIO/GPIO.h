@@ -1,7 +1,7 @@
 #ifndef HAL_GPIO_H
 #define HAL_GPIO_H
 /* section : includes*/
-#include "Std_Types.h"
+#include "../../Std_Types.h"
 #include "Bit_manipulation.h"
 
 
@@ -63,6 +63,7 @@ typedef struct{
 
 }pin_config_t;
 /* section : Function Declaration*/
+
 Std_ReturnType gpio_pin_direction_initialize(const pin_config_t*);
 Std_ReturnType gpio_pin_get_direction_status( pin_config_t*, direction_t *);
 Std_ReturnType gpio_pin_write_logic( pin_config_t*, logic_t);
