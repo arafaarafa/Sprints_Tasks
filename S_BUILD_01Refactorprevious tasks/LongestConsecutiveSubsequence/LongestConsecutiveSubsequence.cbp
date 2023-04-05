@@ -35,14 +35,14 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="LCS.h" />
-		<Unit filename="insertion_sort.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="insertion_sort.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="main.h" />
+		<Unit filename="sort.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sort.h" />
 		<Unit filename="std_types.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

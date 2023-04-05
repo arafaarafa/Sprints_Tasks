@@ -35,10 +35,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Stack.h" />
-		<Unit filename="balancedparantheths.c">
+		<Unit filename="balanced.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="balancedparantheths.h" />
+		<Unit filename="balanced.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
