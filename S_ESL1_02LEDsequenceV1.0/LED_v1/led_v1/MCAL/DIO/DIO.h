@@ -33,8 +33,9 @@ typedef enum{
 }logic_t;
 
 typedef enum{
-    GPIO_DIRECTION_OUTPUT,
-    GPIO_DIRECTION_INPUT
+    
+    GPIO_DIRECTION_INPUT=0,
+	GPIO_DIRECTION_OUTPUT=1
 }direction_t;
 
 typedef enum{

@@ -1,7 +1,0 @@
-# depslib dependency file v1.0
-1680696560 source:d:\arafa\led\led_v1\led_v1\led_v1\fuse.c
-	<avr/io.h>
-
-1680713834 source:d:\arafa\led\led_v1\led_v1\led_v1\main.c
-	<avr/io.h>
-

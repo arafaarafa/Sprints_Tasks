@@ -1,7 +1,7 @@
 #ifndef BIT_MANIPULATION_H
 #define BIT_MANIPULATION_H
 
-#define HWREG8(_X)      (*((volatile uint8 *)(_X)))
+#define HWREG8(_X)      (*((volatile uint8_t *)(_X)))
 #define BIT_MASK        0x01
 
 #define CLEAR_BIT(REG, BIT_POSN)            (REG &= (~(BIT_MASK << BIT_POSN)))  /*clear a specific bit in reg*/

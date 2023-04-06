@@ -1,9 +1,9 @@
-ifndef LED_H
+#ifndef LED_H
 #define	LED_H
 
 
 /* section : includes*/
-#include "../../MCAL_layer/GPIO/GPIO.h"
+#include "../../MCAL/DIO/DIO.h"
 
 
 /* section : Macro Declaration*/
@@ -18,9 +18,9 @@ typedef enum {
 }led_status_t;
 
 typedef struct{
-    uint8 port_name:4;
-    uint8 pin:3;
-    uint8 led_status:1;
+    uint8_t port_name:4;
+    uint8_t pin:3;
+    uint8_t led_status:1;
 }led_t;
 
 /* section : Function Declaration*/

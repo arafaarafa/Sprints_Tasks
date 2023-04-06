@@ -1,3 +1,5 @@
+#include "PushButton.h"
+
 /**
  *
  * @param btn it's pointer has the configuration of button @ref button_t

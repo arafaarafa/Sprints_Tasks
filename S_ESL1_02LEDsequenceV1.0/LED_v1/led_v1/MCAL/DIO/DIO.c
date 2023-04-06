@@ -1,9 +1,9 @@
 #include "DIO.h"
 
 
-volatile uint8_t *DDRx_registers[] = {0x3A, 0x37, 0x34, 0x31};
-volatile uint8_t *PORTx_registers[] = {0x3B, 0x38, 0x35, 0x32};
-volatile uint8_t *PINx_registers[] = {0x39, 0x36, 0x33, 0x30};
+static volatile uint8_t *DDRx_registers[] = {0x3A, 0x37, 0x34, 0x31};
+static volatile uint8_t *PORTx_registers[] = {0x3B, 0x38, 0x35, 0x32};
+static volatile uint8_t *PINx_registers[] = {0x39, 0x36, 0x33, 0x30};
 
 
 /**
@@ -20,11 +20,12 @@ Std_ReturnType gpio_pin_direction_initialize(const pin_config_t *pin_config){
     }
     else{
         if(pin_config->direction == GPIO_DIRECTION_OUTPUT){
-        CLEAR_BIT(HWREG8(DDRx_registers[pin_config->port]), pin_config->pin);
-
+        
+			SET_BIT(HWREG8(DDRx_registers[pin_config->port]), pin_config->pin);
         }
         else if(pin_config->direction == GPIO_DIRECTION_INPUT){
-            SET_BIT(HWREG8(DDRx_registers[pin_config->port]), pin_config->pin);
+			
+            CLEAR_BIT(HWREG8(DDRx_registers[pin_config->port]), pin_config->pin);
         }
         else{
             ret =  E_NOT_OK;
@@ -142,7 +143,7 @@ Std_ReturnType gpio_pin_toggle_logic( pin_config_t *pin_config){
 }
 
 
-**
+/**
  *
  * @param pin_config it is pointer to pin configuration @ref pin_config_t
  * @return status of function could be
@@ -172,7 +173,7 @@ Std_ReturnType gpio_pin_initialize( pin_config_t* pin_config){
  *          E_OK : the function done successfully
  *          E_NOT_OK : the function has issue to perform this action
  */
-Std_ReturnType gpio_port_direction_initialize(port_index_t port, uint8 direction){
+Std_ReturnType gpio_port_direction_initialize(port_index_t port, uint8_t direction){
 
     Std_ReturnType ret = E_OK;
     if(port > PORT_MAX_NUMBER-1){
@@ -197,7 +198,7 @@ Std_ReturnType gpio_port_direction_initialize(port_index_t port, uint8 direction
  *          E_OK : the function done successfully
  *          E_NOT_OK : the function has issue to perform this action
  */
-Std_ReturnType gpio_port_get_direction_status(port_index_t port, uint8 *direction_status){
+Std_ReturnType gpio_port_get_direction_status(port_index_t port, uint8_t *direction_status){
 
     Std_ReturnType ret = E_OK;
 
@@ -221,7 +222,7 @@ Std_ReturnType gpio_port_get_direction_status(port_index_t port, uint8 *directio
  *          E_OK : the function done successfully
  *          E_NOT_OK : the function has issue to perform this action
  */
-Std_ReturnType gpio_port_write_logic(port_index_t port, uint8 logic){
+Std_ReturnType gpio_port_write_logic(port_index_t port, uint8_t logic){
 
     Std_ReturnType ret = E_OK;
 
@@ -246,7 +247,7 @@ Std_ReturnType gpio_port_write_logic(port_index_t port, uint8 logic){
  *          E_OK : the function done successfully
  *          E_NOT_OK : the function has issue to perform this action
  */
-Std_ReturnType gpio_port_read_logic(port_index_t port, uint8 *logic){
+Std_ReturnType gpio_port_read_logic(port_index_t port, uint8_t *logic){
 
     Std_ReturnType ret = E_OK;
 
@@ -289,7 +290,7 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port){
 
 
 
-Std_ReturnType gpio_port_low_nibble_direction_initialize(pin_config_t *pin_config, uint8 data){
+Std_ReturnType gpio_port_low_nibble_direction_initialize(pin_config_t *pin_config, uint8_t data){
     Std_ReturnType ret = E_OK;
     if(pin_config == NULL){
         ret =E_NOT_OK;
@@ -300,7 +301,7 @@ Std_ReturnType gpio_port_low_nibble_direction_initialize(pin_config_t *pin_confi
     return ret;
 
 }
-Std_ReturnType gpio_port_low_nibble_write_logic(pin_config_t *pin_config, uint8 data){
+Std_ReturnType gpio_port_low_nibble_write_logic(pin_config_t *pin_config, uint8_t data){
     Std_ReturnType ret = E_OK;
     if(pin_config == NULL){
         ret =E_NOT_OK;
@@ -310,7 +311,7 @@ Std_ReturnType gpio_port_low_nibble_write_logic(pin_config_t *pin_config, uint8 
     }
     return ret;
 }
-Std_ReturnType gpio_port_high_nibble_direction_initialize(pin_config_t *pin_config, uint8 data){
+Std_ReturnType gpio_port_high_nibble_direction_initialize(pin_config_t *pin_config, uint8_t data){
     Std_ReturnType ret = E_OK;
     if(pin_config == NULL){
         ret =E_NOT_OK;
@@ -321,7 +322,7 @@ Std_ReturnType gpio_port_high_nibble_direction_initialize(pin_config_t *pin_conf
     return ret;
 
 }
-Std_ReturnType gpio_port_high_nibble_write_logic(pin_config_t *pin_config, uint8 data){
+Std_ReturnType gpio_port_high_nibble_write_logic(pin_config_t *pin_config, uint8_t data){
     Std_ReturnType ret = E_OK;
     if(pin_config == NULL){
         ret =E_NOT_OK;
