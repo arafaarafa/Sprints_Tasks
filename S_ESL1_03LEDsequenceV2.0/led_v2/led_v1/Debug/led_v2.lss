@@ -1,0 +1,1398 @@
+
+led_v2.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000660  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000012  00800060  00000660  000006f4  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000000c  00800072  00800072  00000706  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000706  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000738  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000001a8  00000000  00000000  00000774  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00001cac  00000000  00000000  0000091c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000b24  00000000  00000000  000025c8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000eae  00000000  00000000  000030ec  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000003e4  00000000  00000000  00003f9c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000912  00000000  00000000  00004380  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000152f  00000000  00000000  00004c92  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000158  00000000  00000000  000061c1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 e0 02 	jmp	0x5c0	; 0x5c0 <__vector_1>
+   8:	0c 94 07 03 	jmp	0x60e	; 0x60e <__vector_2>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e0 e6       	ldi	r30, 0x60	; 96
+  68:	f6 e0       	ldi	r31, 0x06	; 6
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a2 37       	cpi	r26, 0x72	; 114
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	a2 e7       	ldi	r26, 0x72	; 114
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	ae 37       	cpi	r26, 0x7E	; 126
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 8b 01 	call	0x316	; 0x316 <main>
+  8a:	0c 94 2e 03 	jmp	0x65c	; 0x65c <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <function_trial>:
+
+
+
+
+void function_trial(void){
+	if(flag_accure != 0){
+  92:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+  96:	88 23       	and	r24, r24
+  98:	39 f0       	breq	.+14     	; 0xa8 <function_trial+0x16>
+		led_counter++;
+  9a:	80 91 73 00 	lds	r24, 0x0073	; 0x800073 <led_counter>
+  9e:	8f 5f       	subi	r24, 0xFF	; 255
+  a0:	80 93 73 00 	sts	0x0073, r24	; 0x800073 <led_counter>
+		flag_accure =0;
+  a4:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__DATA_REGION_ORIGIN__>
+  a8:	08 95       	ret
+
+000000aa <app_init>:
+void app_init(void){
+	
+	/*led 1 configuration*/
+	led[0].port_name=PORTA_INDEX;
+	led[0].pin=PIN_0;
+	led[0].led_status= LED_OFF;
+  aa:	10 92 78 00 	sts	0x0078, r1	; 0x800078 <led>
+	
+	/*led 2 configuration*/
+	led[1].port_name=PORTA_INDEX;
+  ae:	e9 e7       	ldi	r30, 0x79	; 121
+  b0:	f0 e0       	ldi	r31, 0x00	; 0
+  b2:	80 81       	ld	r24, Z
+	led[1].pin=PIN_1;
+  b4:	80 78       	andi	r24, 0x80	; 128
+	led[1].led_status= LED_OFF;
+  b6:	80 61       	ori	r24, 0x10	; 16
+  b8:	8f 77       	andi	r24, 0x7F	; 127
+  ba:	80 83       	st	Z, r24
+	
+	/*led 3 configuration*/
+	led[2].port_name=PORTA_INDEX;
+  bc:	ea e7       	ldi	r30, 0x7A	; 122
+  be:	f0 e0       	ldi	r31, 0x00	; 0
+  c0:	80 81       	ld	r24, Z
+	led[2].pin=PIN_2;
+  c2:	80 78       	andi	r24, 0x80	; 128
+	led[2].led_status= LED_OFF;
+  c4:	80 62       	ori	r24, 0x20	; 32
+  c6:	8f 77       	andi	r24, 0x7F	; 127
+  c8:	80 83       	st	Z, r24
+	
+	/*led 4 configuration*/
+	led[3].port_name=PORTA_INDEX;
+  ca:	eb e7       	ldi	r30, 0x7B	; 123
+  cc:	f0 e0       	ldi	r31, 0x00	; 0
+  ce:	80 81       	ld	r24, Z
+	led[3].pin=PIN_3;
+  d0:	80 78       	andi	r24, 0x80	; 128
+	led[3].led_status= LED_OFF;
+  d2:	80 63       	ori	r24, 0x30	; 48
+  d4:	8f 77       	andi	r24, 0x7F	; 127
+  d6:	80 83       	st	Z, r24
+	
+	/*button 1 configuration*/
+	btn_1.pin_INT_config.INT_mode = FALLING_EDGE;
+  d8:	ec e7       	ldi	r30, 0x7C	; 124
+  da:	f0 e0       	ldi	r31, 0x00	; 0
+  dc:	82 e0       	ldi	r24, 0x02	; 2
+  de:	81 83       	std	Z+1, r24	; 0x01
+	btn_1.pin_INT_config.pin_config.port = PORTD_INDEX;
+  e0:	80 81       	ld	r24, Z
+  e2:	88 7f       	andi	r24, 0xF8	; 248
+  e4:	83 60       	ori	r24, 0x03	; 3
+	btn_1.pin_INT_config.pin_config.pin = PIN_2;
+  e6:	87 7c       	andi	r24, 0xC7	; 199
+	btn_1.pin_INT_config.pin_config.direction = GPIO_DIRECTION_INPUT;
+  e8:	80 61       	ori	r24, 0x10	; 16
+  ea:	8f 7b       	andi	r24, 0xBF	; 191
+  ec:	80 83       	st	Z, r24
+	
+	
+	/*init all leds and button*/
+	led_intialize(&led[0]);
+  ee:	88 e7       	ldi	r24, 0x78	; 120
+  f0:	90 e0       	ldi	r25, 0x00	; 0
+  f2:	0e 94 b7 00 	call	0x16e	; 0x16e <led_intialize>
+	led_intialize(&led[1]);
+  f6:	89 e7       	ldi	r24, 0x79	; 121
+  f8:	90 e0       	ldi	r25, 0x00	; 0
+  fa:	0e 94 b7 00 	call	0x16e	; 0x16e <led_intialize>
+	led_intialize(&led[2]);
+  fe:	8a e7       	ldi	r24, 0x7A	; 122
+ 100:	90 e0       	ldi	r25, 0x00	; 0
+ 102:	0e 94 b7 00 	call	0x16e	; 0x16e <led_intialize>
+	led_intialize(&led[3]);
+ 106:	8b e7       	ldi	r24, 0x7B	; 123
+ 108:	90 e0       	ldi	r25, 0x00	; 0
+ 10a:	0e 94 b7 00 	call	0x16e	; 0x16e <led_intialize>
+	button_with_INT(&btn_1, function_trial);
+ 10e:	69 e4       	ldi	r22, 0x49	; 73
+ 110:	70 e0       	ldi	r23, 0x00	; 0
+ 112:	8c e7       	ldi	r24, 0x7C	; 124
+ 114:	90 e0       	ldi	r25, 0x00	; 0
+ 116:	0e 94 1f 01 	call	0x23e	; 0x23e <button_with_INT>
+ 11a:	08 95       	ret
+
+0000011c <app_start>:
+
+
+
+void app_start(void){
+	static uint8_t prev_state=0;
+	button_disable_INT(&btn_1);
+ 11c:	8c e7       	ldi	r24, 0x7C	; 124
+ 11e:	90 e0       	ldi	r25, 0x00	; 0
+ 120:	0e 94 70 01 	call	0x2e0	; 0x2e0 <button_disable_INT>
+	if(prev_state != led_counter){
+ 124:	90 91 72 00 	lds	r25, 0x0072	; 0x800072 <__data_end>
+ 128:	80 91 73 00 	lds	r24, 0x0073	; 0x800073 <led_counter>
+ 12c:	98 17       	cp	r25, r24
+ 12e:	91 f0       	breq	.+36     	; 0x154 <app_start+0x38>
+		led_toggle(&led[led_counter-1]);
+ 130:	90 e0       	ldi	r25, 0x00	; 0
+ 132:	89 58       	subi	r24, 0x89	; 137
+ 134:	9f 4f       	sbci	r25, 0xFF	; 255
+ 136:	0e 94 e8 00 	call	0x1d0	; 0x1d0 <led_toggle>
+		
+		if(led_counter>=4){
+ 13a:	80 91 73 00 	lds	r24, 0x0073	; 0x800073 <led_counter>
+ 13e:	84 30       	cpi	r24, 0x04	; 4
+ 140:	10 f0       	brcs	.+4      	; 0x146 <app_start+0x2a>
+			led_counter =0;
+ 142:	10 92 73 00 	sts	0x0073, r1	; 0x800073 <led_counter>
+			
+		}
+		prev_state = led_counter;
+ 146:	80 91 73 00 	lds	r24, 0x0073	; 0x800073 <led_counter>
+ 14a:	80 93 72 00 	sts	0x0072, r24	; 0x800072 <__data_end>
+		flag_accure = 1;
+ 14e:	81 e0       	ldi	r24, 0x01	; 1
+ 150:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+	}
+	button_enable_INT(&btn_1);
+ 154:	8c e7       	ldi	r24, 0x7C	; 124
+ 156:	90 e0       	ldi	r25, 0x00	; 0
+ 158:	0e 94 55 01 	call	0x2aa	; 0x2aa <button_enable_INT>
+	for(int x = 0;x<5000; x++);
+ 15c:	80 e0       	ldi	r24, 0x00	; 0
+ 15e:	90 e0       	ldi	r25, 0x00	; 0
+ 160:	01 c0       	rjmp	.+2      	; 0x164 <app_start+0x48>
+ 162:	01 96       	adiw	r24, 0x01	; 1
+ 164:	88 38       	cpi	r24, 0x88	; 136
+ 166:	23 e1       	ldi	r18, 0x13	; 19
+ 168:	92 07       	cpc	r25, r18
+ 16a:	dc f3       	brlt	.-10     	; 0x162 <app_start+0x46>
+	
+	
+	
+	
+}
+ 16c:	08 95       	ret
+
+0000016e <led_intialize>:
+        pin_config_t temp = {.port = led->port_name, .pin = led->pin, .direction = GPIO_DIRECTION_OUTPUT , .logic = LED_OFF };
+        led->led_status = LED_OFF;
+        gpio_pin_write_logic( &temp, temp.logic);
+    }
+    return res;
+}
+ 16e:	cf 93       	push	r28
+ 170:	df 93       	push	r29
+ 172:	1f 92       	push	r1
+ 174:	cd b7       	in	r28, 0x3d	; 61
+ 176:	de b7       	in	r29, 0x3e	; 62
+ 178:	00 97       	sbiw	r24, 0x00	; 0
+ 17a:	29 f1       	breq	.+74     	; 0x1c6 <led_intialize+0x58>
+ 17c:	fc 01       	movw	r30, r24
+ 17e:	20 81       	ld	r18, Z
+ 180:	92 2f       	mov	r25, r18
+ 182:	97 70       	andi	r25, 0x07	; 7
+ 184:	89 81       	ldd	r24, Y+1	; 0x01
+ 186:	88 7f       	andi	r24, 0xF8	; 248
+ 188:	89 2b       	or	r24, r25
+ 18a:	92 2f       	mov	r25, r18
+ 18c:	92 95       	swap	r25
+ 18e:	9f 70       	andi	r25, 0x0F	; 15
+ 190:	97 70       	andi	r25, 0x07	; 7
+ 192:	99 0f       	add	r25, r25
+ 194:	99 0f       	add	r25, r25
+ 196:	99 0f       	add	r25, r25
+ 198:	87 7c       	andi	r24, 0xC7	; 199
+ 19a:	89 2b       	or	r24, r25
+ 19c:	27 fb       	bst	r18, 7
+ 19e:	22 27       	eor	r18, r18
+ 1a0:	20 f9       	bld	r18, 0
+ 1a2:	80 64       	ori	r24, 0x40	; 64
+ 1a4:	20 fb       	bst	r18, 0
+ 1a6:	87 f9       	bld	r24, 7
+ 1a8:	89 83       	std	Y+1, r24	; 0x01
+ 1aa:	ce 01       	movw	r24, r28
+ 1ac:	01 96       	adiw	r24, 0x01	; 1
+ 1ae:	0e 94 90 01 	call	0x320	; 0x320 <gpio_pin_direction_initialize>
+ 1b2:	69 81       	ldd	r22, Y+1	; 0x01
+ 1b4:	67 fb       	bst	r22, 7
+ 1b6:	66 27       	eor	r22, r22
+ 1b8:	60 f9       	bld	r22, 0
+ 1ba:	ce 01       	movw	r24, r28
+ 1bc:	01 96       	adiw	r24, 0x01	; 1
+ 1be:	0e 94 d4 01 	call	0x3a8	; 0x3a8 <gpio_pin_write_logic>
+ 1c2:	80 e0       	ldi	r24, 0x00	; 0
+ 1c4:	01 c0       	rjmp	.+2      	; 0x1c8 <led_intialize+0x5a>
+ 1c6:	81 e0       	ldi	r24, 0x01	; 1
+ 1c8:	0f 90       	pop	r0
+ 1ca:	df 91       	pop	r29
+ 1cc:	cf 91       	pop	r28
+ 1ce:	08 95       	ret
+
+000001d0 <led_toggle>:
+ * @param led @ref led_t
+ * @return Std_ReturnType the status of function
+ *          (E_OK): the function done successfully
+ *          (E_NOT_OK): the function didn't work correctely
+ */
+Std_ReturnType led_toggle(led_t *led){
+ 1d0:	0f 93       	push	r16
+ 1d2:	1f 93       	push	r17
+ 1d4:	cf 93       	push	r28
+ 1d6:	df 93       	push	r29
+ 1d8:	1f 92       	push	r1
+ 1da:	cd b7       	in	r28, 0x3d	; 61
+ 1dc:	de b7       	in	r29, 0x3e	; 62
+Std_ReturnType res = E_OK;
+    if(led == NULL){
+ 1de:	00 97       	sbiw	r24, 0x00	; 0
+ 1e0:	39 f1       	breq	.+78     	; 0x230 <led_toggle+0x60>
+ 1e2:	8c 01       	movw	r16, r24
+        res = E_NOT_OK;
+
+    }else{
+        pin_config_t temp = {.port = led->port_name, .pin = led->pin, .direction = GPIO_DIRECTION_OUTPUT , .logic = led->led_status };
+ 1e4:	fc 01       	movw	r30, r24
+ 1e6:	80 81       	ld	r24, Z
+ 1e8:	28 2f       	mov	r18, r24
+ 1ea:	27 70       	andi	r18, 0x07	; 7
+ 1ec:	99 81       	ldd	r25, Y+1	; 0x01
+ 1ee:	98 7f       	andi	r25, 0xF8	; 248
+ 1f0:	92 2b       	or	r25, r18
+ 1f2:	28 2f       	mov	r18, r24
+ 1f4:	22 95       	swap	r18
+ 1f6:	2f 70       	andi	r18, 0x0F	; 15
+ 1f8:	27 70       	andi	r18, 0x07	; 7
+ 1fa:	22 0f       	add	r18, r18
+ 1fc:	22 0f       	add	r18, r18
+ 1fe:	22 0f       	add	r18, r18
+ 200:	97 7c       	andi	r25, 0xC7	; 199
+ 202:	92 2b       	or	r25, r18
+ 204:	87 fb       	bst	r24, 7
+ 206:	88 27       	eor	r24, r24
+ 208:	80 f9       	bld	r24, 0
+ 20a:	90 64       	ori	r25, 0x40	; 64
+ 20c:	80 fb       	bst	r24, 0
+ 20e:	97 f9       	bld	r25, 7
+ 210:	99 83       	std	Y+1, r25	; 0x01
+        gpio_pin_toggle_logic( &temp);
+ 212:	ce 01       	movw	r24, r28
+ 214:	01 96       	adiw	r24, 0x01	; 1
+ 216:	0e 94 25 02 	call	0x44a	; 0x44a <gpio_pin_toggle_logic>
+        led->led_status = temp.logic;
+ 21a:	89 81       	ldd	r24, Y+1	; 0x01
+ 21c:	87 fb       	bst	r24, 7
+ 21e:	88 27       	eor	r24, r24
+ 220:	80 f9       	bld	r24, 0
+ 222:	f8 01       	movw	r30, r16
+ 224:	90 81       	ld	r25, Z
+ 226:	80 fb       	bst	r24, 0
+ 228:	97 f9       	bld	r25, 7
+ 22a:	90 83       	st	Z, r25
+ * @return Std_ReturnType the status of function
+ *          (E_OK): the function done successfully
+ *          (E_NOT_OK): the function didn't work correctely
+ */
+Std_ReturnType led_toggle(led_t *led){
+Std_ReturnType res = E_OK;
+ 22c:	80 e0       	ldi	r24, 0x00	; 0
+ 22e:	01 c0       	rjmp	.+2      	; 0x232 <led_toggle+0x62>
+    if(led == NULL){
+        res = E_NOT_OK;
+ 230:	81 e0       	ldi	r24, 0x01	; 1
+        gpio_pin_toggle_logic( &temp);
+        led->led_status = temp.logic;
+    }
+    return res;
+
+}
+ 232:	0f 90       	pop	r0
+ 234:	df 91       	pop	r29
+ 236:	cf 91       	pop	r28
+ 238:	1f 91       	pop	r17
+ 23a:	0f 91       	pop	r16
+ 23c:	08 95       	ret
+
+0000023e <button_with_INT>:
+*
+*   -Return cases-
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+Std_ReturnType button_with_INT( button_INT_t *btn_INT , void (*func)(void)){
+ 23e:	0f 93       	push	r16
+ 240:	1f 93       	push	r17
+ 242:	cf 93       	push	r28
+ 244:	df 93       	push	r29
+	Std_ReturnType ret = E_OK;
+	if(btn_INT == NULL  || func == NULL){
+ 246:	00 97       	sbiw	r24, 0x00	; 0
+ 248:	21 f1       	breq	.+72     	; 0x292 <button_with_INT+0x54>
+ 24a:	61 15       	cp	r22, r1
+ 24c:	71 05       	cpc	r23, r1
+ 24e:	19 f1       	breq	.+70     	; 0x296 <button_with_INT+0x58>
+		ret =E_NOT_OK;
+	}
+	else{
+		
+		if(btn_INT->pin_INT_config.pin_config.port == PORTD_INDEX){
+ 250:	fc 01       	movw	r30, r24
+ 252:	20 81       	ld	r18, Z
+ 254:	32 2f       	mov	r19, r18
+ 256:	37 70       	andi	r19, 0x07	; 7
+ 258:	33 30       	cpi	r19, 0x03	; 3
+ 25a:	f9 f4       	brne	.+62     	; 0x29a <button_with_INT+0x5c>
+ 25c:	8b 01       	movw	r16, r22
+ 25e:	ec 01       	movw	r28, r24
+			if(btn_INT->pin_INT_config.pin_config.pin == PIN_2){
+ 260:	28 73       	andi	r18, 0x38	; 56
+ 262:	20 31       	cpi	r18, 0x10	; 16
+ 264:	51 f4       	brne	.+20     	; 0x27a <button_with_INT+0x3c>
+				gpio_pin_direction_initialize(&(btn_INT->pin_INT_config.pin_config));
+ 266:	0e 94 90 01 	call	0x320	; 0x320 <gpio_pin_direction_initialize>
+				gpio_set_callback_INT0_function(func);
+ 26a:	c8 01       	movw	r24, r16
+ 26c:	0e 94 cc 02 	call	0x598	; 0x598 <gpio_set_callback_INT0_function>
+				gpio_init_INT0(&btn_INT->pin_INT_config);
+ 270:	ce 01       	movw	r24, r28
+ 272:	0e 94 4d 02 	call	0x49a	; 0x49a <gpio_init_INT0>
+*   -Return cases-
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+Std_ReturnType button_with_INT( button_INT_t *btn_INT , void (*func)(void)){
+	Std_ReturnType ret = E_OK;
+ 276:	80 e0       	ldi	r24, 0x00	; 0
+ 278:	13 c0       	rjmp	.+38     	; 0x2a0 <button_with_INT+0x62>
+		if(btn_INT->pin_INT_config.pin_config.port == PORTD_INDEX){
+			if(btn_INT->pin_INT_config.pin_config.pin == PIN_2){
+				gpio_pin_direction_initialize(&(btn_INT->pin_INT_config.pin_config));
+				gpio_set_callback_INT0_function(func);
+				gpio_init_INT0(&btn_INT->pin_INT_config);
+			}else if(btn_INT->pin_INT_config.pin_config.pin == PIN_3){
+ 27a:	28 31       	cpi	r18, 0x18	; 24
+ 27c:	81 f4       	brne	.+32     	; 0x29e <button_with_INT+0x60>
+				gpio_pin_direction_initialize(&(btn_INT->pin_INT_config.pin_config));
+ 27e:	0e 94 90 01 	call	0x320	; 0x320 <gpio_pin_direction_initialize>
+				gpio_set_callback_INT1_function(func);
+ 282:	c8 01       	movw	r24, r16
+ 284:	0e 94 d6 02 	call	0x5ac	; 0x5ac <gpio_set_callback_INT1_function>
+				gpio_init_INT1(&btn_INT->pin_INT_config);
+ 288:	ce 01       	movw	r24, r28
+ 28a:	0e 94 61 02 	call	0x4c2	; 0x4c2 <gpio_init_INT1>
+*   -Return cases-
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+Std_ReturnType button_with_INT( button_INT_t *btn_INT , void (*func)(void)){
+	Std_ReturnType ret = E_OK;
+ 28e:	80 e0       	ldi	r24, 0x00	; 0
+ 290:	07 c0       	rjmp	.+14     	; 0x2a0 <button_with_INT+0x62>
+	if(btn_INT == NULL  || func == NULL){
+		ret =E_NOT_OK;
+ 292:	81 e0       	ldi	r24, 0x01	; 1
+ 294:	05 c0       	rjmp	.+10     	; 0x2a0 <button_with_INT+0x62>
+ 296:	81 e0       	ldi	r24, 0x01	; 1
+ 298:	03 c0       	rjmp	.+6      	; 0x2a0 <button_with_INT+0x62>
+			}else{
+				ret =E_NOT_OK;
+			}
+			
+		}else{
+			ret =E_NOT_OK;
+ 29a:	81 e0       	ldi	r24, 0x01	; 1
+ 29c:	01 c0       	rjmp	.+2      	; 0x2a0 <button_with_INT+0x62>
+			}else if(btn_INT->pin_INT_config.pin_config.pin == PIN_3){
+				gpio_pin_direction_initialize(&(btn_INT->pin_INT_config.pin_config));
+				gpio_set_callback_INT1_function(func);
+				gpio_init_INT1(&btn_INT->pin_INT_config);
+			}else{
+				ret =E_NOT_OK;
+ 29e:	81 e0       	ldi	r24, 0x01	; 1
+		
+	}
+
+	return ret;
+
+}
+ 2a0:	df 91       	pop	r29
+ 2a2:	cf 91       	pop	r28
+ 2a4:	1f 91       	pop	r17
+ 2a6:	0f 91       	pop	r16
+ 2a8:	08 95       	ret
+
+000002aa <button_enable_INT>:
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+Std_ReturnType button_enable_INT( button_INT_t *btn_INT){
+	Std_ReturnType ret = E_OK;
+	if(btn_INT == NULL){
+ 2aa:	00 97       	sbiw	r24, 0x00	; 0
+ 2ac:	99 f0       	breq	.+38     	; 0x2d4 <button_enable_INT+0x2a>
+		ret =E_NOT_OK;
+	}
+	else{
+		if(btn_INT->pin_INT_config.pin_config.port == PORTD_INDEX){
+ 2ae:	fc 01       	movw	r30, r24
+ 2b0:	20 81       	ld	r18, Z
+ 2b2:	32 2f       	mov	r19, r18
+ 2b4:	37 70       	andi	r19, 0x07	; 7
+ 2b6:	33 30       	cpi	r19, 0x03	; 3
+ 2b8:	79 f4       	brne	.+30     	; 0x2d8 <button_enable_INT+0x2e>
+			if(btn_INT->pin_INT_config.pin_config.pin == PIN_2){
+ 2ba:	28 73       	andi	r18, 0x38	; 56
+ 2bc:	20 31       	cpi	r18, 0x10	; 16
+ 2be:	21 f4       	brne	.+8      	; 0x2c8 <button_enable_INT+0x1e>
+				gpio_enable_INT0(&btn_INT->pin_INT_config);
+ 2c0:	0e 94 7e 02 	call	0x4fc	; 0x4fc <gpio_enable_INT0>
+*   -Return cases-
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+Std_ReturnType button_enable_INT( button_INT_t *btn_INT){
+	Std_ReturnType ret = E_OK;
+ 2c4:	80 e0       	ldi	r24, 0x00	; 0
+ 2c6:	08 95       	ret
+		if(btn_INT->pin_INT_config.pin_config.port == PORTD_INDEX){
+			if(btn_INT->pin_INT_config.pin_config.pin == PIN_2){
+				gpio_enable_INT0(&btn_INT->pin_INT_config);
+				
+			}
+			else if(btn_INT->pin_INT_config.pin_config.pin == PIN_3){
+ 2c8:	28 31       	cpi	r18, 0x18	; 24
+ 2ca:	41 f4       	brne	.+16     	; 0x2dc <button_enable_INT+0x32>
+				gpio_enable_INT1(&btn_INT->pin_INT_config);
+ 2cc:	0e 94 92 02 	call	0x524	; 0x524 <gpio_enable_INT1>
+*   -Return cases-
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+Std_ReturnType button_enable_INT( button_INT_t *btn_INT){
+	Std_ReturnType ret = E_OK;
+ 2d0:	80 e0       	ldi	r24, 0x00	; 0
+ 2d2:	08 95       	ret
+	if(btn_INT == NULL){
+		ret =E_NOT_OK;
+ 2d4:	81 e0       	ldi	r24, 0x01	; 1
+ 2d6:	08 95       	ret
+			else{
+				ret =E_NOT_OK;
+			}
+			
+			}else{
+			ret =E_NOT_OK;
+ 2d8:	81 e0       	ldi	r24, 0x01	; 1
+ 2da:	08 95       	ret
+			else if(btn_INT->pin_INT_config.pin_config.pin == PIN_3){
+				gpio_enable_INT1(&btn_INT->pin_INT_config);
+				
+			}
+			else{
+				ret =E_NOT_OK;
+ 2dc:	81 e0       	ldi	r24, 0x01	; 1
+		}
+		
+	}
+	return ret;
+	
+}
+ 2de:	08 95       	ret
+
+000002e0 <button_disable_INT>:
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+Std_ReturnType button_disable_INT( button_INT_t *btn_INT){
+	Std_ReturnType ret = E_OK;
+	if(btn_INT == NULL){
+ 2e0:	00 97       	sbiw	r24, 0x00	; 0
+ 2e2:	99 f0       	breq	.+38     	; 0x30a <button_disable_INT+0x2a>
+		ret =E_NOT_OK;
+	}
+	else{
+		if(btn_INT->pin_INT_config.pin_config.port == PORTD_INDEX){
+ 2e4:	fc 01       	movw	r30, r24
+ 2e6:	20 81       	ld	r18, Z
+ 2e8:	32 2f       	mov	r19, r18
+ 2ea:	37 70       	andi	r19, 0x07	; 7
+ 2ec:	33 30       	cpi	r19, 0x03	; 3
+ 2ee:	79 f4       	brne	.+30     	; 0x30e <button_disable_INT+0x2e>
+			if(btn_INT->pin_INT_config.pin_config.pin == PIN_2){
+ 2f0:	28 73       	andi	r18, 0x38	; 56
+ 2f2:	20 31       	cpi	r18, 0x10	; 16
+ 2f4:	21 f4       	brne	.+8      	; 0x2fe <button_disable_INT+0x1e>
+					gpio_disable_INT0(&btn_INT->pin_INT_config);
+ 2f6:	0e 94 ac 02 	call	0x558	; 0x558 <gpio_disable_INT0>
+*   -Return cases-
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+Std_ReturnType button_disable_INT( button_INT_t *btn_INT){
+	Std_ReturnType ret = E_OK;
+ 2fa:	80 e0       	ldi	r24, 0x00	; 0
+ 2fc:	08 95       	ret
+		if(btn_INT->pin_INT_config.pin_config.port == PORTD_INDEX){
+			if(btn_INT->pin_INT_config.pin_config.pin == PIN_2){
+					gpio_disable_INT0(&btn_INT->pin_INT_config);
+				
+				}
+				else if(btn_INT->pin_INT_config.pin_config.pin == PIN_3){
+ 2fe:	28 31       	cpi	r18, 0x18	; 24
+ 300:	41 f4       	brne	.+16     	; 0x312 <button_disable_INT+0x32>
+					gpio_disable_INT1(&btn_INT->pin_INT_config);
+ 302:	0e 94 bc 02 	call	0x578	; 0x578 <gpio_disable_INT1>
+*   -Return cases-
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+Std_ReturnType button_disable_INT( button_INT_t *btn_INT){
+	Std_ReturnType ret = E_OK;
+ 306:	80 e0       	ldi	r24, 0x00	; 0
+ 308:	08 95       	ret
+	if(btn_INT == NULL){
+		ret =E_NOT_OK;
+ 30a:	81 e0       	ldi	r24, 0x01	; 1
+ 30c:	08 95       	ret
+				else{
+				ret =E_NOT_OK;
+				}
+			
+			}else{
+			ret =E_NOT_OK;
+ 30e:	81 e0       	ldi	r24, 0x01	; 1
+ 310:	08 95       	ret
+				else if(btn_INT->pin_INT_config.pin_config.pin == PIN_3){
+					gpio_disable_INT1(&btn_INT->pin_INT_config);
+				
+				}
+				else{
+				ret =E_NOT_OK;
+ 312:	81 e0       	ldi	r24, 0x01	; 1
+		}
+		
+	}
+	return ret;
+	
+}
+ 314:	08 95       	ret
+
+00000316 <main>:
+
+int main(void)
+{
+	
+	
+	app_init();
+ 316:	0e 94 55 00 	call	0xaa	; 0xaa <app_init>
+    while(1){
+		app_start();
+ 31a:	0e 94 8e 00 	call	0x11c	; 0x11c <app_start>
+ 31e:	fd cf       	rjmp	.-6      	; 0x31a <main+0x4>
+
+00000320 <gpio_pin_direction_initialize>:
+    else{
+        SET_HIGH_NIBBLE_BITS(HWREG8(PORTx_registers[pin_config->port]), data);
+    }
+    return ret;
+
+}
+ 320:	fc 01       	movw	r30, r24
+ 322:	89 2b       	or	r24, r25
+ 324:	d9 f1       	breq	.+118    	; 0x39c <gpio_pin_direction_initialize+0x7c>
+ 326:	40 81       	ld	r20, Z
+ 328:	46 95       	lsr	r20
+ 32a:	46 95       	lsr	r20
+ 32c:	46 95       	lsr	r20
+ 32e:	47 70       	andi	r20, 0x07	; 7
+ 330:	20 81       	ld	r18, Z
+ 332:	27 70       	andi	r18, 0x07	; 7
+ 334:	30 e0       	ldi	r19, 0x00	; 0
+ 336:	24 30       	cpi	r18, 0x04	; 4
+ 338:	31 05       	cpc	r19, r1
+ 33a:	94 f5       	brge	.+100    	; 0x3a0 <gpio_pin_direction_initialize+0x80>
+ 33c:	80 81       	ld	r24, Z
+ 33e:	98 2f       	mov	r25, r24
+ 340:	90 74       	andi	r25, 0x40	; 64
+ 342:	86 ff       	sbrs	r24, 6
+ 344:	14 c0       	rjmp	.+40     	; 0x36e <gpio_pin_direction_initialize+0x4e>
+ 346:	22 0f       	add	r18, r18
+ 348:	33 1f       	adc	r19, r19
+ 34a:	f9 01       	movw	r30, r18
+ 34c:	e7 59       	subi	r30, 0x97	; 151
+ 34e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 350:	01 90       	ld	r0, Z+
+ 352:	f0 81       	ld	r31, Z
+ 354:	e0 2d       	mov	r30, r0
+ 356:	20 81       	ld	r18, Z
+ 358:	81 e0       	ldi	r24, 0x01	; 1
+ 35a:	90 e0       	ldi	r25, 0x00	; 0
+ 35c:	02 c0       	rjmp	.+4      	; 0x362 <gpio_pin_direction_initialize+0x42>
+ 35e:	88 0f       	add	r24, r24
+ 360:	99 1f       	adc	r25, r25
+ 362:	4a 95       	dec	r20
+ 364:	e2 f7       	brpl	.-8      	; 0x35e <gpio_pin_direction_initialize+0x3e>
+ 366:	82 2b       	or	r24, r18
+ 368:	80 83       	st	Z, r24
+ 36a:	80 e0       	ldi	r24, 0x00	; 0
+ 36c:	08 95       	ret
+ 36e:	91 11       	cpse	r25, r1
+ 370:	19 c0       	rjmp	.+50     	; 0x3a4 <gpio_pin_direction_initialize+0x84>
+ 372:	22 0f       	add	r18, r18
+ 374:	33 1f       	adc	r19, r19
+ 376:	f9 01       	movw	r30, r18
+ 378:	e7 59       	subi	r30, 0x97	; 151
+ 37a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 37c:	01 90       	ld	r0, Z+
+ 37e:	f0 81       	ld	r31, Z
+ 380:	e0 2d       	mov	r30, r0
+ 382:	20 81       	ld	r18, Z
+ 384:	81 e0       	ldi	r24, 0x01	; 1
+ 386:	90 e0       	ldi	r25, 0x00	; 0
+ 388:	02 c0       	rjmp	.+4      	; 0x38e <gpio_pin_direction_initialize+0x6e>
+ 38a:	88 0f       	add	r24, r24
+ 38c:	99 1f       	adc	r25, r25
+ 38e:	4a 95       	dec	r20
+ 390:	e2 f7       	brpl	.-8      	; 0x38a <gpio_pin_direction_initialize+0x6a>
+ 392:	80 95       	com	r24
+ 394:	82 23       	and	r24, r18
+ 396:	80 83       	st	Z, r24
+ 398:	80 e0       	ldi	r24, 0x00	; 0
+ 39a:	08 95       	ret
+ 39c:	81 e0       	ldi	r24, 0x01	; 1
+ 39e:	08 95       	ret
+ 3a0:	81 e0       	ldi	r24, 0x01	; 1
+ 3a2:	08 95       	ret
+ 3a4:	81 e0       	ldi	r24, 0x01	; 1
+ 3a6:	08 95       	ret
+
+000003a8 <gpio_pin_write_logic>:
+ 3a8:	00 97       	sbiw	r24, 0x00	; 0
+ 3aa:	09 f4       	brne	.+2      	; 0x3ae <gpio_pin_write_logic+0x6>
+ 3ac:	4a c0       	rjmp	.+148    	; 0x442 <__EEPROM_REGION_LENGTH__+0x42>
+ 3ae:	66 23       	and	r22, r22
+ 3b0:	29 f1       	breq	.+74     	; 0x3fc <gpio_pin_write_logic+0x54>
+ 3b2:	61 30       	cpi	r22, 0x01	; 1
+ 3b4:	09 f0       	breq	.+2      	; 0x3b8 <gpio_pin_write_logic+0x10>
+ 3b6:	47 c0       	rjmp	.+142    	; 0x446 <__EEPROM_REGION_LENGTH__+0x46>
+ 3b8:	dc 01       	movw	r26, r24
+ 3ba:	2c 91       	ld	r18, X
+ 3bc:	e2 2f       	mov	r30, r18
+ 3be:	e7 70       	andi	r30, 0x07	; 7
+ 3c0:	f0 e0       	ldi	r31, 0x00	; 0
+ 3c2:	ee 0f       	add	r30, r30
+ 3c4:	ff 1f       	adc	r31, r31
+ 3c6:	ef 59       	subi	r30, 0x9F	; 159
+ 3c8:	ff 4f       	sbci	r31, 0xFF	; 255
+ 3ca:	01 90       	ld	r0, Z+
+ 3cc:	f0 81       	ld	r31, Z
+ 3ce:	e0 2d       	mov	r30, r0
+ 3d0:	60 81       	ld	r22, Z
+ 3d2:	26 95       	lsr	r18
+ 3d4:	26 95       	lsr	r18
+ 3d6:	26 95       	lsr	r18
+ 3d8:	27 70       	andi	r18, 0x07	; 7
+ 3da:	41 e0       	ldi	r20, 0x01	; 1
+ 3dc:	50 e0       	ldi	r21, 0x00	; 0
+ 3de:	da 01       	movw	r26, r20
+ 3e0:	02 c0       	rjmp	.+4      	; 0x3e6 <gpio_pin_write_logic+0x3e>
+ 3e2:	aa 0f       	add	r26, r26
+ 3e4:	bb 1f       	adc	r27, r27
+ 3e6:	2a 95       	dec	r18
+ 3e8:	e2 f7       	brpl	.-8      	; 0x3e2 <gpio_pin_write_logic+0x3a>
+ 3ea:	9d 01       	movw	r18, r26
+ 3ec:	26 2b       	or	r18, r22
+ 3ee:	20 83       	st	Z, r18
+ 3f0:	fc 01       	movw	r30, r24
+ 3f2:	20 81       	ld	r18, Z
+ 3f4:	20 68       	ori	r18, 0x80	; 128
+ 3f6:	20 83       	st	Z, r18
+ 3f8:	80 e0       	ldi	r24, 0x00	; 0
+ 3fa:	08 95       	ret
+ 3fc:	dc 01       	movw	r26, r24
+ 3fe:	2c 91       	ld	r18, X
+ 400:	e2 2f       	mov	r30, r18
+ 402:	e7 70       	andi	r30, 0x07	; 7
+ 404:	f0 e0       	ldi	r31, 0x00	; 0
+ 406:	ee 0f       	add	r30, r30
+ 408:	ff 1f       	adc	r31, r31
+ 40a:	ef 59       	subi	r30, 0x9F	; 159
+ 40c:	ff 4f       	sbci	r31, 0xFF	; 255
+ 40e:	01 90       	ld	r0, Z+
+ 410:	f0 81       	ld	r31, Z
+ 412:	e0 2d       	mov	r30, r0
+ 414:	60 81       	ld	r22, Z
+ 416:	26 95       	lsr	r18
+ 418:	26 95       	lsr	r18
+ 41a:	26 95       	lsr	r18
+ 41c:	27 70       	andi	r18, 0x07	; 7
+ 41e:	41 e0       	ldi	r20, 0x01	; 1
+ 420:	50 e0       	ldi	r21, 0x00	; 0
+ 422:	da 01       	movw	r26, r20
+ 424:	02 c0       	rjmp	.+4      	; 0x42a <__EEPROM_REGION_LENGTH__+0x2a>
+ 426:	aa 0f       	add	r26, r26
+ 428:	bb 1f       	adc	r27, r27
+ 42a:	2a 95       	dec	r18
+ 42c:	e2 f7       	brpl	.-8      	; 0x426 <__EEPROM_REGION_LENGTH__+0x26>
+ 42e:	9d 01       	movw	r18, r26
+ 430:	20 95       	com	r18
+ 432:	26 23       	and	r18, r22
+ 434:	20 83       	st	Z, r18
+ 436:	fc 01       	movw	r30, r24
+ 438:	20 81       	ld	r18, Z
+ 43a:	2f 77       	andi	r18, 0x7F	; 127
+ 43c:	20 83       	st	Z, r18
+ 43e:	80 e0       	ldi	r24, 0x00	; 0
+ 440:	08 95       	ret
+ 442:	81 e0       	ldi	r24, 0x01	; 1
+ 444:	08 95       	ret
+ 446:	81 e0       	ldi	r24, 0x01	; 1
+ 448:	08 95       	ret
+
+0000044a <gpio_pin_toggle_logic>:
+ 44a:	dc 01       	movw	r26, r24
+ 44c:	89 2b       	or	r24, r25
+ 44e:	19 f1       	breq	.+70     	; 0x496 <gpio_pin_toggle_logic+0x4c>
+ 450:	9c 91       	ld	r25, X
+ 452:	e9 2f       	mov	r30, r25
+ 454:	e7 70       	andi	r30, 0x07	; 7
+ 456:	f0 e0       	ldi	r31, 0x00	; 0
+ 458:	ee 0f       	add	r30, r30
+ 45a:	ff 1f       	adc	r31, r31
+ 45c:	ef 59       	subi	r30, 0x9F	; 159
+ 45e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 460:	01 90       	ld	r0, Z+
+ 462:	f0 81       	ld	r31, Z
+ 464:	e0 2d       	mov	r30, r0
+ 466:	80 81       	ld	r24, Z
+ 468:	96 95       	lsr	r25
+ 46a:	96 95       	lsr	r25
+ 46c:	96 95       	lsr	r25
+ 46e:	97 70       	andi	r25, 0x07	; 7
+ 470:	21 e0       	ldi	r18, 0x01	; 1
+ 472:	30 e0       	ldi	r19, 0x00	; 0
+ 474:	02 c0       	rjmp	.+4      	; 0x47a <gpio_pin_toggle_logic+0x30>
+ 476:	22 0f       	add	r18, r18
+ 478:	33 1f       	adc	r19, r19
+ 47a:	9a 95       	dec	r25
+ 47c:	e2 f7       	brpl	.-8      	; 0x476 <gpio_pin_toggle_logic+0x2c>
+ 47e:	28 27       	eor	r18, r24
+ 480:	20 83       	st	Z, r18
+ 482:	9c 91       	ld	r25, X
+ 484:	97 fb       	bst	r25, 7
+ 486:	88 27       	eor	r24, r24
+ 488:	80 f9       	bld	r24, 0
+ 48a:	80 95       	com	r24
+ 48c:	80 fb       	bst	r24, 0
+ 48e:	97 f9       	bld	r25, 7
+ 490:	9c 93       	st	X, r25
+ 492:	80 e0       	ldi	r24, 0x00	; 0
+ 494:	08 95       	ret
+ 496:	81 e0       	ldi	r24, 0x01	; 1
+ 498:	08 95       	ret
+
+0000049a <gpio_init_INT0>:
+*   -Return cases-
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+
+Std_ReturnType gpio_init_INT0(const pin_INT_config_t *pin_INT_config){
+ 49a:	fc 01       	movw	r30, r24
+	Std_ReturnType ret = E_OK;
+	if(pin_INT_config == NULL){
+ 49c:	89 2b       	or	r24, r25
+ 49e:	69 f0       	breq	.+26     	; 0x4ba <gpio_init_INT0+0x20>
+		ret =E_NOT_OK;
+	}
+	else{
+		
+		if((pin_INT_config->pin_config.port == PORTD_INDEX) && (pin_INT_config->pin_config.pin == PIN_2)){
+ 4a0:	90 81       	ld	r25, Z
+ 4a2:	9f 73       	andi	r25, 0x3F	; 63
+ 4a4:	93 31       	cpi	r25, 0x13	; 19
+ 4a6:	59 f4       	brne	.+22     	; 0x4be <gpio_init_INT0+0x24>
+			//GICR_ADD |= (1<<INT0_Globle);
+			
+			MCUCR_ADD |= pin_INT_config->INT_mode;
+ 4a8:	95 b7       	in	r25, 0x35	; 53
+ 4aa:	81 81       	ldd	r24, Z+1	; 0x01
+ 4ac:	89 2b       	or	r24, r25
+ 4ae:	85 bf       	out	0x35, r24	; 53
+			
+			SREG_ADD |= (1<<Globle_INT);
+ 4b0:	8f b7       	in	r24, 0x3f	; 63
+ 4b2:	80 68       	ori	r24, 0x80	; 128
+ 4b4:	8f bf       	out	0x3f, r24	; 63
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+
+Std_ReturnType gpio_init_INT0(const pin_INT_config_t *pin_INT_config){
+	Std_ReturnType ret = E_OK;
+ 4b6:	80 e0       	ldi	r24, 0x00	; 0
+ 4b8:	08 95       	ret
+	if(pin_INT_config == NULL){
+		ret =E_NOT_OK;
+ 4ba:	81 e0       	ldi	r24, 0x01	; 1
+ 4bc:	08 95       	ret
+			MCUCR_ADD |= pin_INT_config->INT_mode;
+			
+			SREG_ADD |= (1<<Globle_INT);
+			
+		}else{
+			ret =E_NOT_OK;
+ 4be:	81 e0       	ldi	r24, 0x01	; 1
+			
+
+	}
+	return ret;
+	
+}
+ 4c0:	08 95       	ret
+
+000004c2 <gpio_init_INT1>:
+*
+*   -Return cases-
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+Std_ReturnType gpio_init_INT1(const pin_INT_config_t *pin_INT_config){
+ 4c2:	fc 01       	movw	r30, r24
+	Std_ReturnType ret = E_OK;
+	if(pin_INT_config == NULL){
+ 4c4:	89 2b       	or	r24, r25
+ 4c6:	b1 f0       	breq	.+44     	; 0x4f4 <gpio_init_INT1+0x32>
+		ret =E_NOT_OK;
+	}
+	else{
+		
+		if((pin_INT_config->pin_config.port == PORTD_INDEX) && (pin_INT_config->pin_config.pin == PIN_3)){
+ 4c8:	90 81       	ld	r25, Z
+ 4ca:	9f 73       	andi	r25, 0x3F	; 63
+ 4cc:	9b 31       	cpi	r25, 0x1B	; 27
+ 4ce:	a1 f4       	brne	.+40     	; 0x4f8 <gpio_init_INT1+0x36>
+			GICR_ADD |= (1<<INT1_Globle);
+ 4d0:	8b b7       	in	r24, 0x3b	; 59
+ 4d2:	80 68       	ori	r24, 0x80	; 128
+ 4d4:	8b bf       	out	0x3b, r24	; 59
+			
+			MCUCR_ADD |= (pin_INT_config->INT_mode<<2);
+ 4d6:	25 b7       	in	r18, 0x35	; 53
+ 4d8:	91 81       	ldd	r25, Z+1	; 0x01
+ 4da:	89 2f       	mov	r24, r25
+ 4dc:	90 e0       	ldi	r25, 0x00	; 0
+ 4de:	88 0f       	add	r24, r24
+ 4e0:	99 1f       	adc	r25, r25
+ 4e2:	88 0f       	add	r24, r24
+ 4e4:	99 1f       	adc	r25, r25
+ 4e6:	82 2b       	or	r24, r18
+ 4e8:	85 bf       	out	0x35, r24	; 53
+			
+			SREG_ADD |= (1<<Globle_INT);
+ 4ea:	8f b7       	in	r24, 0x3f	; 63
+ 4ec:	80 68       	ori	r24, 0x80	; 128
+ 4ee:	8f bf       	out	0x3f, r24	; 63
+*   -Return cases-
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+Std_ReturnType gpio_init_INT1(const pin_INT_config_t *pin_INT_config){
+	Std_ReturnType ret = E_OK;
+ 4f0:	80 e0       	ldi	r24, 0x00	; 0
+ 4f2:	08 95       	ret
+	if(pin_INT_config == NULL){
+		ret =E_NOT_OK;
+ 4f4:	81 e0       	ldi	r24, 0x01	; 1
+ 4f6:	08 95       	ret
+			MCUCR_ADD |= (pin_INT_config->INT_mode<<2);
+			
+			SREG_ADD |= (1<<Globle_INT);
+			
+		}else{
+			ret =E_NOT_OK;
+ 4f8:	81 e0       	ldi	r24, 0x01	; 1
+		
+
+	}
+	return ret;
+	
+}
+ 4fa:	08 95       	ret
+
+000004fc <gpio_enable_INT0>:
+*
+*   -Return cases-
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+Std_ReturnType gpio_enable_INT0(const pin_INT_config_t *pin_INT_config){
+ 4fc:	fc 01       	movw	r30, r24
+	Std_ReturnType ret = E_OK;
+	if(pin_INT_config == NULL){
+ 4fe:	89 2b       	or	r24, r25
+ 500:	69 f0       	breq	.+26     	; 0x51c <gpio_enable_INT0+0x20>
+		ret =E_NOT_OK;
+	}
+	else{
+		
+		if((pin_INT_config->pin_config.port == PORTD_INDEX) && (pin_INT_config->pin_config.pin == PIN_2)){
+ 502:	90 81       	ld	r25, Z
+ 504:	9f 73       	andi	r25, 0x3F	; 63
+ 506:	93 31       	cpi	r25, 0x13	; 19
+ 508:	59 f4       	brne	.+22     	; 0x520 <gpio_enable_INT0+0x24>
+			GICR_ADD |= (1<<INT0_Globle);
+ 50a:	8b b7       	in	r24, 0x3b	; 59
+ 50c:	80 64       	ori	r24, 0x40	; 64
+ 50e:	8b bf       	out	0x3b, r24	; 59
+			MCUCR_ADD |= pin_INT_config->INT_mode;
+ 510:	95 b7       	in	r25, 0x35	; 53
+ 512:	81 81       	ldd	r24, Z+1	; 0x01
+ 514:	89 2b       	or	r24, r25
+ 516:	85 bf       	out	0x35, r24	; 53
+*   -Return cases-
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+Std_ReturnType gpio_enable_INT0(const pin_INT_config_t *pin_INT_config){
+	Std_ReturnType ret = E_OK;
+ 518:	80 e0       	ldi	r24, 0x00	; 0
+ 51a:	08 95       	ret
+	if(pin_INT_config == NULL){
+		ret =E_NOT_OK;
+ 51c:	81 e0       	ldi	r24, 0x01	; 1
+ 51e:	08 95       	ret
+		if((pin_INT_config->pin_config.port == PORTD_INDEX) && (pin_INT_config->pin_config.pin == PIN_2)){
+			GICR_ADD |= (1<<INT0_Globle);
+			MCUCR_ADD |= pin_INT_config->INT_mode;
+			
+			}else{
+			ret =E_NOT_OK;
+ 520:	81 e0       	ldi	r24, 0x01	; 1
+		
+		
+
+	}
+	return ret;
+}
+ 522:	08 95       	ret
+
+00000524 <gpio_enable_INT1>:
+*
+*   -Return cases-
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+Std_ReturnType gpio_enable_INT1(const pin_INT_config_t *pin_INT_config){
+ 524:	fc 01       	movw	r30, r24
+	Std_ReturnType ret = E_OK;
+	if(pin_INT_config == NULL){
+ 526:	89 2b       	or	r24, r25
+ 528:	99 f0       	breq	.+38     	; 0x550 <gpio_enable_INT1+0x2c>
+		ret =E_NOT_OK;
+	}
+	else{
+		
+		if((pin_INT_config->pin_config.port == PORTD_INDEX) && (pin_INT_config->pin_config.pin == PIN_3)){
+ 52a:	90 81       	ld	r25, Z
+ 52c:	9f 73       	andi	r25, 0x3F	; 63
+ 52e:	9b 31       	cpi	r25, 0x1B	; 27
+ 530:	89 f4       	brne	.+34     	; 0x554 <gpio_enable_INT1+0x30>
+			GICR_ADD |= (1<<INT1_Globle);
+ 532:	8b b7       	in	r24, 0x3b	; 59
+ 534:	80 68       	ori	r24, 0x80	; 128
+ 536:	8b bf       	out	0x3b, r24	; 59
+			
+			MCUCR_ADD |= (pin_INT_config->INT_mode<<INT1_MODE_INDEX);
+ 538:	25 b7       	in	r18, 0x35	; 53
+ 53a:	91 81       	ldd	r25, Z+1	; 0x01
+ 53c:	89 2f       	mov	r24, r25
+ 53e:	90 e0       	ldi	r25, 0x00	; 0
+ 540:	88 0f       	add	r24, r24
+ 542:	99 1f       	adc	r25, r25
+ 544:	88 0f       	add	r24, r24
+ 546:	99 1f       	adc	r25, r25
+ 548:	82 2b       	or	r24, r18
+ 54a:	85 bf       	out	0x35, r24	; 53
+*   -Return cases-
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+Std_ReturnType gpio_enable_INT1(const pin_INT_config_t *pin_INT_config){
+	Std_ReturnType ret = E_OK;
+ 54c:	80 e0       	ldi	r24, 0x00	; 0
+ 54e:	08 95       	ret
+	if(pin_INT_config == NULL){
+		ret =E_NOT_OK;
+ 550:	81 e0       	ldi	r24, 0x01	; 1
+ 552:	08 95       	ret
+			GICR_ADD |= (1<<INT1_Globle);
+			
+			MCUCR_ADD |= (pin_INT_config->INT_mode<<INT1_MODE_INDEX);
+			
+			}else{
+			ret =E_NOT_OK;
+ 554:	81 e0       	ldi	r24, 0x01	; 1
+		
+
+	}
+	return ret;
+	
+}
+ 556:	08 95       	ret
+
+00000558 <gpio_disable_INT0>:
+*-2- (E_OK) otherwise
+*/
+
+Std_ReturnType gpio_disable_INT0(const pin_INT_config_t *pin_INT_config){
+	Std_ReturnType ret = E_OK;
+	if(pin_INT_config == NULL){
+ 558:	00 97       	sbiw	r24, 0x00	; 0
+ 55a:	51 f0       	breq	.+20     	; 0x570 <gpio_disable_INT0+0x18>
+		ret =E_NOT_OK;
+	}
+	else{
+		
+		if((pin_INT_config->pin_config.port == PORTD_INDEX) && (pin_INT_config->pin_config.pin == PIN_2)){
+ 55c:	fc 01       	movw	r30, r24
+ 55e:	80 81       	ld	r24, Z
+ 560:	8f 73       	andi	r24, 0x3F	; 63
+ 562:	83 31       	cpi	r24, 0x13	; 19
+ 564:	39 f4       	brne	.+14     	; 0x574 <gpio_disable_INT0+0x1c>
+			GICR_ADD &= ~(1<<INT0_Globle);
+ 566:	8b b7       	in	r24, 0x3b	; 59
+ 568:	8f 7b       	andi	r24, 0xBF	; 191
+ 56a:	8b bf       	out	0x3b, r24	; 59
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+
+Std_ReturnType gpio_disable_INT0(const pin_INT_config_t *pin_INT_config){
+	Std_ReturnType ret = E_OK;
+ 56c:	80 e0       	ldi	r24, 0x00	; 0
+ 56e:	08 95       	ret
+	if(pin_INT_config == NULL){
+		ret =E_NOT_OK;
+ 570:	81 e0       	ldi	r24, 0x01	; 1
+ 572:	08 95       	ret
+			GICR_ADD &= ~(1<<INT0_Globle);
+			
+			
+			
+			}else{
+			ret =E_NOT_OK;
+ 574:	81 e0       	ldi	r24, 0x01	; 1
+		
+
+	}
+	return ret;
+	
+}
+ 576:	08 95       	ret
+
+00000578 <gpio_disable_INT1>:
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+Std_ReturnType gpio_disable_INT1(const pin_INT_config_t *pin_INT_config){
+	Std_ReturnType ret = E_OK;
+	if(pin_INT_config == NULL){
+ 578:	00 97       	sbiw	r24, 0x00	; 0
+ 57a:	51 f0       	breq	.+20     	; 0x590 <gpio_disable_INT1+0x18>
+		ret =E_NOT_OK;
+	}
+	else{
+		
+		if((pin_INT_config->pin_config.port == PORTD_INDEX) && (pin_INT_config->pin_config.pin == PIN_3)){
+ 57c:	fc 01       	movw	r30, r24
+ 57e:	80 81       	ld	r24, Z
+ 580:	8f 73       	andi	r24, 0x3F	; 63
+ 582:	8b 31       	cpi	r24, 0x1B	; 27
+ 584:	39 f4       	brne	.+14     	; 0x594 <gpio_disable_INT1+0x1c>
+			GICR_ADD &= ~(1<<INT1_Globle);
+ 586:	8b b7       	in	r24, 0x3b	; 59
+ 588:	8f 77       	andi	r24, 0x7F	; 127
+ 58a:	8b bf       	out	0x3b, r24	; 59
+*   -Return cases-
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+Std_ReturnType gpio_disable_INT1(const pin_INT_config_t *pin_INT_config){
+	Std_ReturnType ret = E_OK;
+ 58c:	80 e0       	ldi	r24, 0x00	; 0
+ 58e:	08 95       	ret
+	if(pin_INT_config == NULL){
+		ret =E_NOT_OK;
+ 590:	81 e0       	ldi	r24, 0x01	; 1
+ 592:	08 95       	ret
+			GICR_ADD &= ~(1<<INT1_Globle);
+			
+			
+			
+			}else{
+			ret =E_NOT_OK;
+ 594:	81 e0       	ldi	r24, 0x01	; 1
+		
+
+	}
+	return ret;
+	
+}
+ 596:	08 95       	ret
+
+00000598 <gpio_set_callback_INT0_function>:
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+Std_ReturnType gpio_set_callback_INT0_function(void (*func)(void)){
+	Std_ReturnType ret = E_OK;
+	if(func == NULL){
+ 598:	00 97       	sbiw	r24, 0x00	; 0
+ 59a:	31 f0       	breq	.+12     	; 0x5a8 <gpio_set_callback_INT0_function+0x10>
+		ret = E_NOT_OK;
+	}
+	else{
+		callback_0 = func;
+ 59c:	90 93 77 00 	sts	0x0077, r25	; 0x800077 <callback_0+0x1>
+ 5a0:	80 93 76 00 	sts	0x0076, r24	; 0x800076 <callback_0>
+*   -Return cases-
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+Std_ReturnType gpio_set_callback_INT0_function(void (*func)(void)){
+	Std_ReturnType ret = E_OK;
+ 5a4:	80 e0       	ldi	r24, 0x00	; 0
+ 5a6:	08 95       	ret
+	if(func == NULL){
+		ret = E_NOT_OK;
+ 5a8:	81 e0       	ldi	r24, 0x01	; 1
+	else{
+		callback_0 = func;
+	}
+	
+	return ret;
+}
+ 5aa:	08 95       	ret
+
+000005ac <gpio_set_callback_INT1_function>:
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+Std_ReturnType gpio_set_callback_INT1_function(void (*func)(void)){
+	Std_ReturnType ret = E_OK;
+	if(func == NULL){
+ 5ac:	00 97       	sbiw	r24, 0x00	; 0
+ 5ae:	31 f0       	breq	.+12     	; 0x5bc <gpio_set_callback_INT1_function+0x10>
+		ret = E_NOT_OK;
+	}
+	else{
+		callback_1 = func;
+ 5b0:	90 93 75 00 	sts	0x0075, r25	; 0x800075 <callback_1+0x1>
+ 5b4:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <callback_1>
+*   -Return cases-
+*-1- (E_NOK) if there is something wrong
+*-2- (E_OK) otherwise
+*/
+Std_ReturnType gpio_set_callback_INT1_function(void (*func)(void)){
+	Std_ReturnType ret = E_OK;
+ 5b8:	80 e0       	ldi	r24, 0x00	; 0
+ 5ba:	08 95       	ret
+	if(func == NULL){
+		ret = E_NOT_OK;
+ 5bc:	81 e0       	ldi	r24, 0x01	; 1
+	else{
+		callback_1 = func;
+	}
+	
+	return ret;
+}
+ 5be:	08 95       	ret
+
+000005c0 <__vector_1>:
+/*
+*   -Description-
+*-interrupt service routine for  external interrupt 0
+*
+*/
+ISR(INT0_vect){
+ 5c0:	1f 92       	push	r1
+ 5c2:	0f 92       	push	r0
+ 5c4:	0f b6       	in	r0, 0x3f	; 63
+ 5c6:	0f 92       	push	r0
+ 5c8:	11 24       	eor	r1, r1
+ 5ca:	2f 93       	push	r18
+ 5cc:	3f 93       	push	r19
+ 5ce:	4f 93       	push	r20
+ 5d0:	5f 93       	push	r21
+ 5d2:	6f 93       	push	r22
+ 5d4:	7f 93       	push	r23
+ 5d6:	8f 93       	push	r24
+ 5d8:	9f 93       	push	r25
+ 5da:	af 93       	push	r26
+ 5dc:	bf 93       	push	r27
+ 5de:	ef 93       	push	r30
+ 5e0:	ff 93       	push	r31
+	
+	(*callback_0)();
+ 5e2:	e0 91 76 00 	lds	r30, 0x0076	; 0x800076 <callback_0>
+ 5e6:	f0 91 77 00 	lds	r31, 0x0077	; 0x800077 <callback_0+0x1>
+ 5ea:	09 95       	icall
+	
+	
+}
+ 5ec:	ff 91       	pop	r31
+ 5ee:	ef 91       	pop	r30
+ 5f0:	bf 91       	pop	r27
+ 5f2:	af 91       	pop	r26
+ 5f4:	9f 91       	pop	r25
+ 5f6:	8f 91       	pop	r24
+ 5f8:	7f 91       	pop	r23
+ 5fa:	6f 91       	pop	r22
+ 5fc:	5f 91       	pop	r21
+ 5fe:	4f 91       	pop	r20
+ 600:	3f 91       	pop	r19
+ 602:	2f 91       	pop	r18
+ 604:	0f 90       	pop	r0
+ 606:	0f be       	out	0x3f, r0	; 63
+ 608:	0f 90       	pop	r0
+ 60a:	1f 90       	pop	r1
+ 60c:	18 95       	reti
+
+0000060e <__vector_2>:
+*   -Description-
+*-interrupt service routine for  external interrupt 1
+*
+*/
+
+ISR(INT1_vect){
+ 60e:	1f 92       	push	r1
+ 610:	0f 92       	push	r0
+ 612:	0f b6       	in	r0, 0x3f	; 63
+ 614:	0f 92       	push	r0
+ 616:	11 24       	eor	r1, r1
+ 618:	2f 93       	push	r18
+ 61a:	3f 93       	push	r19
+ 61c:	4f 93       	push	r20
+ 61e:	5f 93       	push	r21
+ 620:	6f 93       	push	r22
+ 622:	7f 93       	push	r23
+ 624:	8f 93       	push	r24
+ 626:	9f 93       	push	r25
+ 628:	af 93       	push	r26
+ 62a:	bf 93       	push	r27
+ 62c:	ef 93       	push	r30
+ 62e:	ff 93       	push	r31
+	
+	(*callback_1)();
+ 630:	e0 91 74 00 	lds	r30, 0x0074	; 0x800074 <callback_1>
+ 634:	f0 91 75 00 	lds	r31, 0x0075	; 0x800075 <callback_1+0x1>
+ 638:	09 95       	icall
+	
+	
+ 63a:	ff 91       	pop	r31
+ 63c:	ef 91       	pop	r30
+ 63e:	bf 91       	pop	r27
+ 640:	af 91       	pop	r26
+ 642:	9f 91       	pop	r25
+ 644:	8f 91       	pop	r24
+ 646:	7f 91       	pop	r23
+ 648:	6f 91       	pop	r22
+ 64a:	5f 91       	pop	r21
+ 64c:	4f 91       	pop	r20
+ 64e:	3f 91       	pop	r19
+ 650:	2f 91       	pop	r18
+ 652:	0f 90       	pop	r0
+ 654:	0f be       	out	0x3f, r0	; 63
+ 656:	0f 90       	pop	r0
+ 658:	1f 90       	pop	r1
+ 65a:	18 95       	reti
+
+0000065c <_exit>:
+ 65c:	f8 94       	cli
+
+0000065e <__stop_program>:
+ 65e:	ff cf       	rjmp	.-2      	; 0x65e <__stop_program>
