@@ -61,10 +61,14 @@ Std_ReturnType timer_stop(timer_configuration_t *timer_configuration){
 	
 }
 Std_ReturnType timer_initialize_callback_OVF(void (*callback)(void)){
+	Std_ReturnType ret = E_OK;
 	timer_callback_OVF = callback;
+	return ret;
 }
 Std_ReturnType timer_initialize_callback_COMP(void (*callback)(void)){
+	Std_ReturnType ret = E_OK;
 	timer_callback_COMP = callback;
+	return ret;
 }
 
 ISR (TIMER0_OVF_vect)        //Timer overflow interrupt
