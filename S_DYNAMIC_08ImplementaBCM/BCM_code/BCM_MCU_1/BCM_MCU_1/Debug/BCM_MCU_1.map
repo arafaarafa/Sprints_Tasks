@@ -278,7 +278,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x930
+.text           0x00000000      0x92c
  *(.vectors)
  .vectors       0x00000000       0x54 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32/avr5/crtatmega32.o
                 0x00000000                __vector_default
@@ -360,82 +360,82 @@ END GROUP
  .text.app_init
                 0x00000092       0x5a APP/APP.o
                 0x00000092                app_init
- .text.app_run  0x000000ec       0xaa APP/APP.o
+ .text.app_run  0x000000ec       0xa6 APP/APP.o
                 0x000000ec                app_run
  .text.led_intialize
-                0x00000196       0x62 ECUAL/LED/LED.o
-                0x00000196                led_intialize
+                0x00000192       0x62 ECUAL/LED/LED.o
+                0x00000192                led_intialize
  .text.led_toggle
-                0x000001f8       0x6e ECUAL/LED/LED.o
-                0x000001f8                led_toggle
- .text.main     0x00000266        0xe main.o
-                0x00000266                main
+                0x000001f4       0x6e ECUAL/LED/LED.o
+                0x000001f4                led_toggle
+ .text.main     0x00000262        0xe main.o
+                0x00000262                main
  .text.gpio_pin_direction_initialize
-                0x00000274       0x88 MCAL/DIO/DIO.o
-                0x00000274                gpio_pin_direction_initialize
+                0x00000270       0x88 MCAL/DIO/DIO.o
+                0x00000270                gpio_pin_direction_initialize
  .text.gpio_pin_write_logic
-                0x000002fc       0xa2 MCAL/DIO/DIO.o
-                0x000002fc                gpio_pin_write_logic
+                0x000002f8       0xa2 MCAL/DIO/DIO.o
+                0x000002f8                gpio_pin_write_logic
  .text.gpio_pin_toggle_logic
-                0x0000039e       0x50 MCAL/DIO/DIO.o
-                0x0000039e                gpio_pin_toggle_logic
+                0x0000039a       0x50 MCAL/DIO/DIO.o
+                0x0000039a                gpio_pin_toggle_logic
  .text.uart_init
-                0x000003ee       0xca MCAL/UART/UART.o
-                0x000003ee                uart_init
+                0x000003ea       0xca MCAL/UART/UART.o
+                0x000003ea                uart_init
  .text.uart_write
-                0x000004b8       0x16 MCAL/UART/UART.o
-                0x000004b8                uart_write
+                0x000004b4       0x16 MCAL/UART/UART.o
+                0x000004b4                uart_write
  .text.uart_read
-                0x000004ce       0x1a MCAL/UART/UART.o
-                0x000004ce                uart_read
+                0x000004ca       0x1a MCAL/UART/UART.o
+                0x000004ca                uart_read
  .text.uart_write_INT
-                0x000004e8       0x14 MCAL/UART/UART.o
-                0x000004e8                uart_write_INT
+                0x000004e4       0x14 MCAL/UART/UART.o
+                0x000004e4                uart_write_INT
  .text.uart_enable_UDRIE
-                0x000004fc        0xa MCAL/UART/UART.o
-                0x000004fc                uart_enable_UDRIE
+                0x000004f8        0xa MCAL/UART/UART.o
+                0x000004f8                uart_enable_UDRIE
  .text.uart_disable_UDRIE
-                0x00000506        0xa MCAL/UART/UART.o
-                0x00000506                uart_disable_UDRIE
+                0x00000502        0xa MCAL/UART/UART.o
+                0x00000502                uart_disable_UDRIE
  .text.uart_enable_RCIE
-                0x00000510        0xa MCAL/UART/UART.o
-                0x00000510                uart_enable_RCIE
+                0x0000050c        0xa MCAL/UART/UART.o
+                0x0000050c                uart_enable_RCIE
  .text.uart_read_INT
-                0x0000051a       0x18 MCAL/UART/UART.o
-                0x0000051a                uart_read_INT
+                0x00000516       0x18 MCAL/UART/UART.o
+                0x00000516                uart_read_INT
  .text.uart_disable_RCIE
-                0x00000532        0xa MCAL/UART/UART.o
-                0x00000532                uart_disable_RCIE
+                0x0000052e        0xa MCAL/UART/UART.o
+                0x0000052e                uart_disable_RCIE
  .text.__vector_15
-                0x0000053c       0x14 MCAL/UART/UART.o
-                0x0000053c                __vector_15
+                0x00000538       0x14 MCAL/UART/UART.o
+                0x00000538                __vector_15
  .text.__vector_13
-                0x00000550       0x4e MCAL/UART/UART.o
-                0x00000550                __vector_13
+                0x0000054c       0x4e MCAL/UART/UART.o
+                0x0000054c                __vector_13
  .text.__vector_14
-                0x0000059e       0x4e MCAL/UART/UART.o
-                0x0000059e                __vector_14
+                0x0000059a       0x4e MCAL/UART/UART.o
+                0x0000059a                __vector_14
  .text.uart_send_callback
-                0x000005ec       0xba SERVICE/BCM/BCM.o
+                0x000005e8       0xba SERVICE/BCM/BCM.o
  .text.uart_receive_callback
-                0x000006a6      0x13c SERVICE/BCM/BCM.o
+                0x000006a2      0x13c SERVICE/BCM/BCM.o
  .text.bcm_init
-                0x000007e2       0x1e SERVICE/BCM/BCM.o
-                0x000007e2                bcm_init
+                0x000007de       0x1e SERVICE/BCM/BCM.o
+                0x000007de                bcm_init
  .text.bcm_send_n
-                0x00000800       0x90 SERVICE/BCM/BCM.o
-                0x00000800                bcm_send_n
+                0x000007fc       0x90 SERVICE/BCM/BCM.o
+                0x000007fc                bcm_send_n
  .text.bcm_dispatcher
-                0x00000890       0x28 SERVICE/BCM/BCM.o
-                0x00000890                bcm_dispatcher
+                0x0000088c       0x28 SERVICE/BCM/BCM.o
+                0x0000088c                bcm_dispatcher
  .text.bcm_receive_n
-                0x000008b8       0x74 SERVICE/BCM/BCM.o
-                0x000008b8                bcm_receive_n
-                0x0000092c                . = ALIGN (0x2)
+                0x000008b4       0x74 SERVICE/BCM/BCM.o
+                0x000008b4                bcm_receive_n
+                0x00000928                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000092c        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x0000092c                _exit
-                0x0000092c                exit
+ .fini9         0x00000928        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x00000928                _exit
+                0x00000928                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -454,11 +454,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000092c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000928        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000930                _etext = .
+                0x0000092c                _etext = .
 
-.data           0x00800060       0x78 load address 0x00000930
+.data           0x00800060       0x78 load address 0x0000092c
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -516,8 +516,8 @@ END GROUP
                 0x00800113                packet_2
                 0x00800145                led_0_sending
                 0x00800146                PROVIDE (__bss_end, .)
-                0x00000930                __data_load_start = LOADADDR (.data)
-                0x000009a8                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000092c                __data_load_start = LOADADDR (.data)
+                0x000009a4                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800146        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -611,15 +611,15 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x2995
+.debug_info     0x00000000     0x299f
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_info    0x000004e6      0x7a3 APP/APP.o
- .debug_info    0x00000c89      0x36f ECUAL/LED/LED.o
- .debug_info    0x00000ff8       0xc9 main.o
- .debug_info    0x000010c1      0xa43 MCAL/DIO/DIO.o
- .debug_info    0x00001b04      0x5ac MCAL/UART/UART.o
- .debug_info    0x000020b0      0x8e5 SERVICE/BCM/BCM.o
+ .debug_info    0x000004e6      0x7ad APP/APP.o
+ .debug_info    0x00000c93      0x36f ECUAL/LED/LED.o
+ .debug_info    0x00001002       0xc9 main.o
+ .debug_info    0x000010cb      0xa43 MCAL/DIO/DIO.o
+ .debug_info    0x00001b0e      0x5ac MCAL/UART/UART.o
+ .debug_info    0x000020ba      0x8e5 SERVICE/BCM/BCM.o
 
 .debug_abbrev   0x00000000      0xc12
  *(.debug_abbrev)
@@ -650,20 +650,20 @@ END GROUP
  .debug_frame   0x00000338      0x180 MCAL/UART/UART.o
  .debug_frame   0x000004b8       0xec SERVICE/BCM/BCM.o
 
-.debug_str      0x00000000      0xf45
+.debug_str      0x00000000      0xfb0
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_str     0x00000196      0x75b APP/APP.o
-                                0x7bf (size before relaxing)
- .debug_str     0x000008f1       0xed ECUAL/LED/LED.o
+ .debug_str     0x00000196      0x784 APP/APP.o
+                                0x7e8 (size before relaxing)
+ .debug_str     0x0000091a      0x12f ECUAL/LED/LED.o
                                 0x2ad (size before relaxing)
- .debug_str     0x000009de       0x11 main.o
+ .debug_str     0x00000a49       0x11 main.o
                                 0x1a0 (size before relaxing)
- .debug_str     0x000009ef      0x30d MCAL/DIO/DIO.o
+ .debug_str     0x00000a5a      0x30d MCAL/DIO/DIO.o
                                 0x603 (size before relaxing)
- .debug_str     0x00000cfc       0xd4 MCAL/UART/UART.o
+ .debug_str     0x00000d67       0xd4 MCAL/UART/UART.o
                                 0x5ce (size before relaxing)
- .debug_str     0x00000dd0      0x175 SERVICE/BCM/BCM.o
+ .debug_str     0x00000e3b      0x175 SERVICE/BCM/BCM.o
                                 0x809 (size before relaxing)
 
 .debug_loc      0x00000000     0x1a67

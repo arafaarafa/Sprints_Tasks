@@ -90,7 +90,7 @@ void app_run(void){
 				if(compare_flag == 1){
 					led_toggle(&led_1_receiving);
 				}
-				bcm_send_n(&slave_protocol_selection, packet_1, packet_1_length);
+				bcm_send_n(&slave_protocol_selection, packet_1, 10);
 				compare_flag=1;
 				transmit_or_receive = TRANSMIT;
 				
