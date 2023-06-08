@@ -1,9 +1,9 @@
 #include "Timing.h"
 
-timer_configuration_t timer_configuration;
+static timer_configuration_t timer_configuration;
 
 
-void (*tmp_callBack)(void);
+static void (*tmp_callBack)(void);
 
 
 
