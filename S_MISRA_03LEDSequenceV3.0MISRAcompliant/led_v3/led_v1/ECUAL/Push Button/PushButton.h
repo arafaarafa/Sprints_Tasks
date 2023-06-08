@@ -34,9 +34,9 @@ typedef struct{
 
 /* section : Function Declaration*/
 
-Std_ReturnType button_initializa(const button_t* btn);
-Std_ReturnType button_read_state( button_t *btn, button_state_t *btn_state);
-Std_ReturnType button_with_INT( button_INT_t *btn_INT , void (*func)(void));
-Std_ReturnType button_enable_INT( button_INT_t *btn_INT);
-Std_ReturnType button_disable_INT( button_INT_t *btn_INT);
+extern Std_ReturnType button_initializa(const button_t* btn);
+extern Std_ReturnType button_read_state( button_t *btn, button_state_t *btn_state);
+extern Std_ReturnType button_with_INT( button_INT_t *btn_INT , void (*func)(void));
+extern Std_ReturnType button_enable_INT( button_INT_t *btn_INT);
+extern Std_ReturnType button_disable_INT( button_INT_t *btn_INT);
 #endif	/* PUSH_BUTTON_H */

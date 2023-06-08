@@ -3,9 +3,9 @@
 static void (*callback_0)(void);
 static void (*callback_1)(void);
 
-static volatile uint8_t *DDRx_registers[] = {0x3A, 0x37, 0x34, 0x31};
-static volatile uint8_t *PORTx_registers[] = {0x3B, 0x38, 0x35, 0x32};
-static volatile uint8_t *PINx_registers[] = {0x39, 0x36, 0x33, 0x30};
+static volatile uint8_t *DDRx_registers[] = {(uint8_t *)0x3A, (uint8_t *)0x37, (uint8_t *)0x34, (uint8_t *)0x31};
+static volatile uint8_t *PORTx_registers[] = {(uint8_t *)0x3B, (uint8_t *)0x38, (uint8_t *)0x35, (uint8_t *)0x32};
+static volatile uint8_t *PINx_registers[] = {(uint8_t *)0x39, (uint8_t *)0x36, (uint8_t *)0x33, (uint8_t *)0x30};
 
 
 /**
@@ -17,7 +17,7 @@ static volatile uint8_t *PINx_registers[] = {0x39, 0x36, 0x33, 0x30};
  */
 Std_ReturnType gpio_pin_direction_initialize(const pin_config_t *pin_config){
     Std_ReturnType ret = E_OK;
-    if(pin_config == NULL || pin_config->pin > PIN_MAX_NUMBER-1 || pin_config->port > PORT_MAX_NUMBER-1){
+    if((pin_config == NULL) || (pin_config->pin >= PIN_MAX_NUMBER) || (pin_config->port >= PORT_MAX_NUMBER)){
         ret =E_NOT_OK;
     }
     else{
@@ -48,7 +48,7 @@ Std_ReturnType gpio_pin_get_direction_status( pin_config_t *pin_config, directio
 
     Std_ReturnType ret = E_OK;
 
-    if(pin_config == NULL || direction_status == NULL){
+    if((pin_config == NULL) || (direction_status == NULL)){
         ret =E_NOT_OK;
     }
     else{
@@ -86,9 +86,9 @@ Std_ReturnType gpio_pin_write_logic( pin_config_t *pin_config, logic_t logic){
                 CLEAR_BIT(HWREG8(PORTx_registers[pin_config->port]),pin_config->pin);
                 pin_config->logic = GPIO_LOW;
                 break;
-                default:
-                    ret = E_NOT_OK;
-                    break;
+            default:
+                ret = E_NOT_OK;
+		        break;
 
         }
     }
@@ -109,7 +109,7 @@ Std_ReturnType gpio_pin_read_logic( pin_config_t *pin_config, logic_t *logic){
 
     Std_ReturnType ret = E_OK;
 
-    if(pin_config == NULL || logic == NULL){
+    if((pin_config == NULL) || (logic == NULL)){
         ret =E_NOT_OK;
     }
     else{
@@ -178,7 +178,7 @@ Std_ReturnType gpio_pin_initialize( pin_config_t* pin_config){
 Std_ReturnType gpio_port_direction_initialize(port_index_t port, uint8_t direction){
 
     Std_ReturnType ret = E_OK;
-    if(port > PORT_MAX_NUMBER-1){
+    if(port >= PORT_MAX_NUMBER){
         ret =E_NOT_OK;
     }
     else{
@@ -204,7 +204,7 @@ Std_ReturnType gpio_port_get_direction_status(port_index_t port, uint8_t *direct
 
     Std_ReturnType ret = E_OK;
 
-    if(direction_status == NULL || port > PORT_MAX_NUMBER-1){
+    if((direction_status == NULL) || (port >= PORT_MAX_NUMBER)){
         ret =E_NOT_OK;
     }
     else{
@@ -228,8 +228,8 @@ Std_ReturnType gpio_port_write_logic(port_index_t port, uint8_t logic){
 
     Std_ReturnType ret = E_OK;
 
-    if(port > PORT_MAX_NUMBER-1){
-        ret =E_NOT_OK;
+    if(port >= PORT_MAX_NUMBER){
+        ret = E_NOT_OK;
     }
     else{
         HWREG8(PORTx_registers[port]) = logic;
@@ -253,7 +253,7 @@ Std_ReturnType gpio_port_read_logic(port_index_t port, uint8_t *logic){
 
     Std_ReturnType ret = E_OK;
 
-    if(logic == NULL || port > PORT_MAX_NUMBER-1){
+    if((logic == NULL) || (port >= PORT_MAX_NUMBER)){
         ret =E_NOT_OK;
     }
     else{
@@ -275,7 +275,7 @@ Std_ReturnType gpio_port_read_logic(port_index_t port, uint8_t *logic){
 Std_ReturnType gpio_port_toggle_logic(port_index_t port){
 
     Std_ReturnType ret = E_OK;
-    if(port > PORT_MAX_NUMBER-1){
+    if(port >= PORT_MAX_NUMBER){
         ret =E_NOT_OK;
     }
     else{
@@ -499,8 +499,7 @@ Std_ReturnType gpio_disable_INT0(const pin_INT_config_t *pin_INT_config){
 	else{
 		
 		if((pin_INT_config->pin_config.port == PORTD_INDEX) && (pin_INT_config->pin_config.pin == PIN_2)){
-			GICR_ADD &= ~(1<<INT0_Globle);						
-			
+			GICR_ADD &= ~(1<<INT0_Globle);
 			}else{
 			ret =E_NOT_OK;
 			
@@ -533,8 +532,7 @@ Std_ReturnType gpio_disable_INT1(const pin_INT_config_t *pin_INT_config){
 	else{
 		
 		if((pin_INT_config->pin_config.port == PORTD_INDEX) && (pin_INT_config->pin_config.pin == PIN_3)){
-			GICR_ADD &= ~(1<<INT1_Globle);						
-			
+			GICR_ADD &= ~(1<<INT1_Globle);
 			}else{
 			ret =E_NOT_OK;
 			
