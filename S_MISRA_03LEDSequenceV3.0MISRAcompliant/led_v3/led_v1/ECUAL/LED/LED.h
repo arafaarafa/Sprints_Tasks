@@ -24,9 +24,9 @@ typedef struct{
 }led_t;
 
 /* section : Function Declaration*/
-Std_ReturnType led_intialize(led_t *);
-Std_ReturnType led_turn_on(led_t *);
-Std_ReturnType led_turn_off(led_t *);
-Std_ReturnType led_toggle(led_t *);
+extern Std_ReturnType led_intialize(led_t *);
+extern Std_ReturnType led_turn_on(led_t *);
+extern Std_ReturnType led_turn_off(led_t *);
+extern Std_ReturnType led_toggle(led_t *);
 
 #endif

@@ -23,7 +23,7 @@
 *-1- (E_NOK) if there is something wrong
 *-2- (E_OK) otherwise
 */
-Std_ReturnType timing_init(uint16_t time_us , void (*callback)(void));
+extern Std_ReturnType timing_init(uint16_t time_us , void (*callback)(void));
 
 /*
 *   -Description-
@@ -32,7 +32,7 @@ Std_ReturnType timing_init(uint16_t time_us , void (*callback)(void));
 *   -Return-
 *	VOID
 */
-void timing_start(void);
+extern void timing_start(void);
 
 /*
 *   -Description-
@@ -41,5 +41,5 @@ void timing_start(void);
 *   -Return-
 *	VOID
 */
-void timing_stop(void);
+extern void timing_stop(void);
 #endif

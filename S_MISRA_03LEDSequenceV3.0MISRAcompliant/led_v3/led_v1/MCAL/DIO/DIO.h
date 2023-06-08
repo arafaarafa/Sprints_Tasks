@@ -150,37 +150,37 @@ typedef struct{
 
 /* section : Function Declaration*/
 
-Std_ReturnType gpio_pin_direction_initialize(const pin_config_t*);
-Std_ReturnType gpio_pin_get_direction_status( pin_config_t*, direction_t *);
-Std_ReturnType gpio_pin_write_logic( pin_config_t*, logic_t);
-Std_ReturnType gpio_pin_read_logic( pin_config_t*, logic_t *);
-Std_ReturnType gpio_pin_toggle_logic( pin_config_t*);
-Std_ReturnType gpio_pin_initialize( pin_config_t*);
+extern Std_ReturnType gpio_pin_direction_initialize(const pin_config_t*);
+extern Std_ReturnType gpio_pin_get_direction_status( pin_config_t*, direction_t *);
+extern Std_ReturnType gpio_pin_write_logic( pin_config_t*, logic_t);
+extern Std_ReturnType gpio_pin_read_logic( pin_config_t*, logic_t *);
+extern Std_ReturnType gpio_pin_toggle_logic( pin_config_t*);
+extern Std_ReturnType gpio_pin_initialize( pin_config_t*);
 
 
-Std_ReturnType gpio_port_direction_initialize(port_index_t, uint8_t );
-Std_ReturnType gpio_port_get_direction_status(port_index_t, uint8_t *);
-Std_ReturnType gpio_port_write_logic(port_index_t, uint8_t );
-Std_ReturnType gpio_port_read_logic(port_index_t, uint8_t *);
-Std_ReturnType gpio_port_toggle_logic(port_index_t);
+extern Std_ReturnType gpio_port_direction_initialize(port_index_t, uint8_t );
+extern Std_ReturnType gpio_port_get_direction_status(port_index_t, uint8_t *);
+extern Std_ReturnType gpio_port_write_logic(port_index_t, uint8_t );
+extern Std_ReturnType gpio_port_read_logic(port_index_t, uint8_t *);
+extern Std_ReturnType gpio_port_toggle_logic(port_index_t);
 
 
-Std_ReturnType gpio_port_low_nibble_direction_initialize(pin_config_t *, uint8_t );
-Std_ReturnType gpio_port_low_nibble_write_logic(pin_config_t *, uint8_t);
-Std_ReturnType gpio_port_high_nibble_direction_initialize(pin_config_t *, uint8_t );
-Std_ReturnType gpio_port_high_nibble_write_logic(pin_config_t *, uint8_t);
+extern Std_ReturnType gpio_port_low_nibble_direction_initialize(pin_config_t *, uint8_t );
+extern Std_ReturnType gpio_port_low_nibble_write_logic(pin_config_t *, uint8_t);
+extern Std_ReturnType gpio_port_high_nibble_direction_initialize(pin_config_t *, uint8_t );
+extern Std_ReturnType gpio_port_high_nibble_write_logic(pin_config_t *, uint8_t);
 
-Std_ReturnType gpio_init_INT0(const pin_INT_config_t *pin_INT_config);
-Std_ReturnType gpio_init_INT1(const pin_INT_config_t *pin_INT_config);
+extern Std_ReturnType gpio_init_INT0(const pin_INT_config_t *pin_INT_config);
+extern Std_ReturnType gpio_init_INT1(const pin_INT_config_t *pin_INT_config);
 
-Std_ReturnType gpio_enable_INT0(const pin_INT_config_t *pin_INT_config);
-Std_ReturnType gpio_enable_INT1(const pin_INT_config_t *pin_INT_config);
+extern Std_ReturnType gpio_enable_INT0(const pin_INT_config_t *pin_INT_config);
+extern Std_ReturnType gpio_enable_INT1(const pin_INT_config_t *pin_INT_config);
 
-Std_ReturnType gpio_disable_INT0(const pin_INT_config_t *pin_INT_config);
-Std_ReturnType gpio_disable_INT1(const pin_INT_config_t *pin_INT_config);
+extern Std_ReturnType gpio_disable_INT0(const pin_INT_config_t *pin_INT_config);
+extern Std_ReturnType gpio_disable_INT1(const pin_INT_config_t *pin_INT_config);
 
-Std_ReturnType gpio_set_callback_INT0_function(void (*func)(void));
-Std_ReturnType gpio_set_callback_INT1_function(void (*func)(void));
+extern Std_ReturnType gpio_set_callback_INT0_function(void (*func)(void));
+extern Std_ReturnType gpio_set_callback_INT1_function(void (*func)(void));
 
 #endif
 

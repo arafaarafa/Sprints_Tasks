@@ -31,13 +31,15 @@ Std_ReturnType button_initializa(const button_t* btn){
  */
 Std_ReturnType button_read_state( button_t *btn, button_state_t *btn_state){
     Std_ReturnType ret = E_OK;
+	logic_t temp_logic;
     if(btn == NULL  || btn_state == NULL){
         ret =E_NOT_OK;
     }
     else{
-        logic_t temp_logic;
+        
         gpio_pin_read_logic( &(btn->button_pin), &temp_logic);
-        if(btn->button_active == temp_logic){
+		
+        if(((btn->button_active == BUTTON_ACTIVE_LOW) && (temp_logic == GPIO_LOW)) || ((btn->button_active == BUTTON_ACTIVE_HIGH) && (temp_logic == GPIO_HIGH))){
             *btn_state = BUTTON_PRESSED ;
             btn->button_state = BUTTON_PRESSED ;
             btn->button_pin.logic = temp_logic;
@@ -69,7 +71,7 @@ Std_ReturnType button_read_state( button_t *btn, button_state_t *btn_state){
 */
 Std_ReturnType button_with_INT( button_INT_t *btn_INT , void (*func)(void)){
 	Std_ReturnType ret = E_OK;
-	if(btn_INT == NULL  || func == NULL){
+	if((btn_INT == NULL)  || (func == NULL)){
 		ret =E_NOT_OK;
 	}
 	else{
