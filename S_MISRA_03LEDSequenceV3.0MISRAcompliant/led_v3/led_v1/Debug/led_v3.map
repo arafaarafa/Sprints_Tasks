@@ -39,10 +39,7 @@ Allocating common symbols
 Common symbol       size              file
 
 led                 0x4               app.o
-tmp_callBack        0x2               Timing.o
 btn_2               0x2               app.o
-timer_configuration
-                    0x5               Timing.o
 modes               0x14              app.o
 btn_1               0x2               app.o
 
@@ -68,7 +65,7 @@ Discarded input sections
  .text.button_initializa
                 0x00000000        0xe PushButton.o
  .text.button_read_state
-                0x00000000       0x76 PushButton.o
+                0x00000000       0x86 PushButton.o
  .text          0x00000000        0x0 Timing.o
  .data          0x00000000        0x0 Timing.o
  .bss           0x00000000        0x0 Timing.o
@@ -616,23 +613,24 @@ END GROUP
  .bss.led_counter
                 0x00800074        0x1 app.o
                 0x00800074                led_counter
+ .bss.tmp_callBack
+                0x00800075        0x2 Timing.o
+ .bss.timer_configuration
+                0x00800077        0x5 Timing.o
  .bss.callback_1
-                0x00800075        0x2 DIO.o
+                0x0080007c        0x2 DIO.o
  .bss.callback_0
-                0x00800077        0x2 DIO.o
+                0x0080007e        0x2 DIO.o
  .bss.timer_callback_COMP
-                0x00800079        0x2 Timer.o
+                0x00800080        0x2 Timer.o
  .bss.timer_callback_OVF
-                0x0080007b        0x2 Timer.o
+                0x00800082        0x2 Timer.o
  *(COMMON)
- COMMON         0x0080007d       0x1c app.o
-                0x0080007d                led
-                0x00800081                btn_2
-                0x00800083                modes
-                0x00800097                btn_1
- COMMON         0x00800099        0x7 Timing.o
-                0x00800099                tmp_callBack
-                0x0080009b                timer_configuration
+ COMMON         0x00800084       0x1c app.o
+                0x00800084                led
+                0x00800088                btn_2
+                0x0080008a                modes
+                0x0080009e                btn_1
                 0x008000a0                PROVIDE (__bss_end, .)
                 0x00000e74                __data_load_start = LOADADDR (.data)
                 0x00000e84                __data_load_end = (__data_load_start + SIZEOF (.data))
@@ -732,38 +730,38 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x23fb
+.debug_info     0x00000000     0x23ef
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_info    0x000004e6      0x661 app.o
  .debug_info    0x00000b47      0x341 LED.o
- .debug_info    0x00000e88      0x570 PushButton.o
- .debug_info    0x000013f8      0x31f Timing.o
- .debug_info    0x00001717       0xae main.o
- .debug_info    0x000017c5      0x956 DIO.o
- .debug_info    0x0000211b      0x2e0 Timer.o
+ .debug_info    0x00000e88      0x566 PushButton.o
+ .debug_info    0x000013ee      0x31d Timing.o
+ .debug_info    0x0000170b       0xae main.o
+ .debug_info    0x000017b9      0x956 DIO.o
+ .debug_info    0x0000210f      0x2e0 Timer.o
 
-.debug_abbrev   0x00000000      0xd6a
+.debug_abbrev   0x00000000      0xd50
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4a3 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_abbrev  0x000004a3      0x18e app.o
  .debug_abbrev  0x00000631      0x119 LED.o
- .debug_abbrev  0x0000074a      0x16c PushButton.o
- .debug_abbrev  0x000008b6      0x179 Timing.o
- .debug_abbrev  0x00000a2f       0x68 main.o
- .debug_abbrev  0x00000a97      0x1b1 DIO.o
- .debug_abbrev  0x00000c48      0x122 Timer.o
+ .debug_abbrev  0x0000074a      0x163 PushButton.o
+ .debug_abbrev  0x000008ad      0x168 Timing.o
+ .debug_abbrev  0x00000a15       0x68 main.o
+ .debug_abbrev  0x00000a7d      0x1b1 DIO.o
+ .debug_abbrev  0x00000c2e      0x122 Timer.o
 
-.debug_line     0x00000000     0x1361
+.debug_line     0x00000000     0x138d
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x116 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_line    0x00000116      0x352 app.o
  .debug_line    0x00000468      0x1da LED.o
- .debug_line    0x00000642      0x2d2 PushButton.o
- .debug_line    0x00000914      0x1c4 Timing.o
- .debug_line    0x00000ad8       0x5b main.o
- .debug_line    0x00000b33      0x62e DIO.o
- .debug_line    0x00001161      0x200 Timer.o
+ .debug_line    0x00000642      0x2fe PushButton.o
+ .debug_line    0x00000940      0x1c4 Timing.o
+ .debug_line    0x00000b04       0x5b main.o
+ .debug_line    0x00000b5f      0x62e DIO.o
+ .debug_line    0x0000118d      0x200 Timer.o
 
 .debug_frame    0x00000000      0x5b0
  *(.debug_frame)
@@ -775,22 +773,22 @@ END GROUP
  .debug_frame   0x0000025c      0x240 DIO.o
  .debug_frame   0x0000049c      0x114 Timer.o
 
-.debug_str      0x00000000      0xcaa
+.debug_str      0x00000000      0xcd9
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_str     0x00000196      0x3fe app.o
-                                0x458 (size before relaxing)
- .debug_str     0x00000594       0xb6 LED.o
-                                0x26e (size before relaxing)
- .debug_str     0x0000064a      0x1cd PushButton.o
-                                0x490 (size before relaxing)
- .debug_str     0x00000817      0x23a Timing.o
-                                0x400 (size before relaxing)
- .debug_str     0x00000a51       0x11 main.o
-                                0x191 (size before relaxing)
- .debug_str     0x00000a62      0x1d4 DIO.o
-                                0x59d (size before relaxing)
- .debug_str     0x00000c36       0x74 Timer.o
+ .debug_str     0x00000196      0x40d app.o
+                                0x467 (size before relaxing)
+ .debug_str     0x000005a3       0x7b LED.o
+                                0x29d (size before relaxing)
+ .debug_str     0x0000061e      0x1cd PushButton.o
+                                0x4bf (size before relaxing)
+ .debug_str     0x000007eb      0x23a Timing.o
+                                0x40f (size before relaxing)
+ .debug_str     0x00000a25       0x11 main.o
+                                0x1a0 (size before relaxing)
+ .debug_str     0x00000a36      0x1d4 DIO.o
+                                0x5cc (size before relaxing)
+ .debug_str     0x00000c0a       0xcf Timer.o
                                 0x3b6 (size before relaxing)
 
 .debug_loc      0x00000000     0x1a6c

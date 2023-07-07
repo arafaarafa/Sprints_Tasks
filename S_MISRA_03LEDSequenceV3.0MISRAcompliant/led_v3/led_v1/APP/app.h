@@ -29,7 +29,7 @@ typedef struct{
  * @param void
  * @return void
  */
-void app_init(void);
+extern void app_init(void);
 
 /**
  *
@@ -37,7 +37,7 @@ void app_init(void);
  * @param void
  * @return void
  */
-void app_start(void);
+extern void app_start(void);
 
 
 #endif
