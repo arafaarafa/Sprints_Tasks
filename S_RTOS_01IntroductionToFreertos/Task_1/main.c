@@ -65,8 +65,8 @@
 /* Peripheral includes. */
 #include "serial.h"
 #include "GPIO.h"
-
-
+/* Tasks includes*/
+#include "led_task.h"
 /*-----------------------------------------------------------*/
 
 /* Constants to setup I/O and processor. */
@@ -88,7 +88,7 @@ static void prvSetupHardware( void );
 
 
 
-
+TaskHandle_t xLed_task_Handler = NULL;
 
 
 /*
@@ -103,7 +103,13 @@ int main( void )
 										
 									
     /* Create Tasks here */
-
+	xTaskCreate(
+                    led_task,       							/* Function that implements the task. */
+                    "led_v1",          						/* Text name for the task. */
+                    configMINIMAL_STACK_SIZE,     /* Stack size in words, not bytes. */
+                    ( void * ) NULL,    					/* Parameter passed into the task. */
+                    1,							/* Priority at which the task is created. */
+                    &xLed_task_Handler );
 
 	/* Now all the tasks have been started - start the scheduler.
 

@@ -65,8 +65,8 @@
 /* Peripheral includes. */
 #include "serial.h"
 #include "GPIO.h"
-
-
+/* Tasks includes*/
+#include "led_task.h"
 /*-----------------------------------------------------------*/
 
 /* Constants to setup I/O and processor. */
@@ -88,7 +88,14 @@ static void prvSetupHardware( void );
 
 
 
+TaskHandle_t xLed_task_1_Handler = NULL;
+TaskHandle_t xLed_task_2_Handler = NULL;
+TaskHandle_t xLed_task_3_Handler = NULL;
 
+
+led_task_config task_1_cfg;
+led_task_config task_2_cfg;
+led_task_config task_3_cfg;
 
 
 /*
@@ -97,13 +104,55 @@ static void prvSetupHardware( void );
  */
 int main( void )
 {
+	/*global vars*/
+
+	task_1_cfg.pin_num = PIN1;
+	task_1_cfg.delay = 100;
+	
+  
+	task_2_cfg.pin_num = PIN2;
+	task_2_cfg.delay = 500;
+  
+
+
+	task_3_cfg.pin_num = PIN3;
+	task_3_cfg.delay = 1000;
+	
+	
 	/* Setup the hardware for use with the Keil demo board. */
 	prvSetupHardware();
-
+	
 										
 									
     /* Create Tasks here */
-
+	/***************************task_1**************************************/	
+	xTaskCreate(
+                    led_task,       							/* Function that implements the task. */
+                    "led_task_1",          						/* Text name for the task. */
+                    configMINIMAL_STACK_SIZE,     /* Stack size in words, not bytes. */
+                    &task_1_cfg,    					/* Parameter passed into the task. */
+                    1,							/* Priority at which the task is created. */
+                    &xLed_task_1_Handler );
+										
+										
+										
+	/***************************task_2**************************************/	
+	xTaskCreate(
+                    led_task,       							/* Function that implements the task. */
+                    "led_task_2",          						/* Text name for the task. */
+                    configMINIMAL_STACK_SIZE,     /* Stack size in words, not bytes. */
+                    &task_2_cfg,    					/* Parameter passed into the task. */
+                    2,							/* Priority at which the task is created. */
+                    &xLed_task_2_Handler );
+										
+	/***************************task_3**************************************/									
+	xTaskCreate(
+                    led_task,       							/* Function that implements the task. */
+                    "led_task_3",          						/* Text name for the task. */
+                    configMINIMAL_STACK_SIZE,     /* Stack size in words, not bytes. */
+                    &task_3_cfg,    					/* Parameter passed into the task. */
+                    3,							/* Priority at which the task is created. */
+                    &xLed_task_3_Handler );
 
 	/* Now all the tasks have been started - start the scheduler.
 
