@@ -62,11 +62,15 @@
 #include "lpc21xx.h"
 #include "task.h"
 #include "semphr.h"
+#include "queue.h"
 /* Peripheral includes. */
 #include "serial.h"
 #include "GPIO.h"
-
-
+/* Tasks includes*/
+#include "common.h"
+#include "serial_task.h"
+#include "button_task.h"
+#include "consumer_task.h"
 /*-----------------------------------------------------------*/
 
 /* Constants to setup I/O and processor. */
@@ -87,8 +91,19 @@ static void prvSetupHardware( void );
 /*-----------------------------------------------------------*/
 
 
+/*-------------------------------------------------*/
 
+TaskHandle_t Serial_Task_Handler = NULL;
+TaskHandle_t Button_Task_1_Handler = NULL;
+TaskHandle_t Button_Task_2_Handler = NULL;
+TaskHandle_t Consumer_Task_Handler = NULL;
 
+QueueHandle_t xStructQueue = NULL;
+
+serial_task_config serial_task_cfg;
+button_task_config button_task_1_cfg;
+button_task_config button_task_2_cfg;
+consumer_task_config consumer_task_cfg;
 
 
 /*
@@ -97,12 +112,77 @@ static void prvSetupHardware( void );
  */
 int main( void )
 {
+	/*global vars*/
+	xStructQueue = xQueueCreate(10, sizeof( message_packet ) );
+	
+	
+	
+	/*****************button cfg 1**********************/
+	serial_task_cfg.queue = &xStructQueue;
+	
+	
+	/*****************button cfg 2**********************/
+	button_task_1_cfg.id = BUTTON_TASK_1;
+	button_task_1_cfg.pin_num = PIN0;
+	button_task_1_cfg.queue = &xStructQueue;
+	
+	
+	/*****************button cfg 1**********************/
+	button_task_2_cfg.id = BUTTON_TASK_2;
+	button_task_2_cfg.pin_num = PIN7;
+	button_task_2_cfg.queue = &xStructQueue;
+	
+	/*************consumer cfg**************/
+	consumer_task_cfg.id = CONSUMER_TASK;
+	consumer_task_cfg.delay = 100;
+	consumer_task_cfg.queue = &xStructQueue;
+	
+	
+	
+	
 	/* Setup the hardware for use with the Keil demo board. */
 	prvSetupHardware();
-
+	
 										
 									
     /* Create Tasks here */
+	/***************************serial_task**************************************/	
+	xTaskCreate(
+                    serial_task,       							/* Function that implements the task. */
+                    "serial_task",          						/* Text name for the task. */
+                    configMINIMAL_STACK_SIZE,     /* Stack size in words, not bytes. */
+                    &serial_task_cfg,    					/* Parameter passed into the task. */
+                    1,							/* Priority at which the task is created. */
+                    &Serial_Task_Handler );
+										
+										
+										
+	/***************************button task 1**************************************/	
+	xTaskCreate(
+                    button_task,       							/* Function that implements the task. */
+                    "button_task_1",          						/* Text name for the task. */
+                    configMINIMAL_STACK_SIZE,     /* Stack size in words, not bytes. */
+                    &button_task_1_cfg,    					/* Parameter passed into the task. */
+                    1,							/* Priority at which the task is created. */
+                    &Button_Task_1_Handler );
+										
+		/***************************button task 2**************************************/	
+	xTaskCreate(
+                    button_task,       							/* Function that implements the task. */
+                    "button_task_2",          						/* Text name for the task. */
+                    configMINIMAL_STACK_SIZE,     /* Stack size in words, not bytes. */
+                    &button_task_2_cfg,    					/* Parameter passed into the task. */
+                    1,							/* Priority at which the task is created. */
+                    &Button_Task_2_Handler );
+										
+		/***************************consumer task**************************************/	
+	xTaskCreate(
+                    consumer_task,       							/* Function that implements the task. */
+                    "consumer_task",          						/* Text name for the task. */
+                    configMINIMAL_STACK_SIZE,     /* Stack size in words, not bytes. */
+                    &consumer_task_cfg,    					/* Parameter passed into the task. */
+                    1,							/* Priority at which the task is created. */
+                    &Consumer_Task_Handler );
 
 
 	/* Now all the tasks have been started - start the scheduler.
