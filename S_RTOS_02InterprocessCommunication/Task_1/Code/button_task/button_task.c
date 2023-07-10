@@ -12,15 +12,15 @@ void button_task(void *pvParameters){
 		button_state = GPIO_read(PORT_0, ((button_task_config *)pvParameters)->pin_num);
 		if(button_state == PIN_IS_HIGH){
 			while(button_state == PIN_IS_HIGH){
-				vTaskDelay(25);
+				vTaskDelay(BUTTON_TASK_DELAY);
 				button_state = GPIO_read(PORT_0, ((button_task_config *)pvParameters)->pin_num);
 			}
 			
 			xSemaphoreGive( *(((button_task_config *)pvParameters)->semaphore));
-			vTaskDelay(25);
+			vTaskDelay(BUTTON_TASK_DELAY);
 		
 		}
 		
 	}
-	vTaskDelay(25);
+	vTaskDelay(BUTTON_TASK_DELAY);
 }

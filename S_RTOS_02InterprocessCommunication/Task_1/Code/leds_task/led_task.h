@@ -5,7 +5,8 @@
 #include "task.h"
 #include "semphr.h"
 
-
+#define LED_TASK_DELAY								25
+#define LED_TICKS_WAIT_ON_EVENT						0
 typedef enum{
 	LED_OFF,
 	LED_ON
