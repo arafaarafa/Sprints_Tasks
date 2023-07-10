@@ -75,6 +75,10 @@
 /* Constants for the ComTest demo application tasks. */
 #define mainCOM_TEST_BAUD_RATE	( ( unsigned long ) 115200 )
 
+/*----------------------------------------------------------*/
+#define TASK_DELAY_100												100
+#define TASK_DELAY_500												500
+#define TASK_DELAY_1000												1000
 
 
 
@@ -105,6 +109,7 @@ led_task_config task_3_cfg;
 int main( void )
 {
 	/*global vars*/
+	
 
 	task_1_cfg.pin_num = PIN1;
 	task_1_cfg.delay = 100;
