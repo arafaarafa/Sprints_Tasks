@@ -22,7 +22,7 @@ void button_task(void *pvParameters){
 			}else if(data.id == BUTTON_TASK_2){
 				strcpy( data.ucData, "raising_t2" );
 			}	
-			xQueueSend( *(((button_task_config *)pvParameters)->queue), ( void * ) &data, ( TickType_t ) 25 );
+			xQueueSend( *(((button_task_config *)pvParameters)->queue), ( void * ) &data, ( TickType_t ) BUTTON_TICKS_WAIT_ON_EVENT );
 			prev_state = PIN_IS_HIGH;
 		}else if((prev_state == PIN_IS_HIGH) && (button_state == PIN_IS_LOW)){
 			if(data.id == BUTTON_TASK_1){
@@ -30,12 +30,12 @@ void button_task(void *pvParameters){
 			}else if(data.id == BUTTON_TASK_2){
 				strcpy( data.ucData, "falling_t2" );
 			}	
-			xQueueSend( *(((button_task_config *)pvParameters)->queue), ( void * ) &data, ( TickType_t ) 25 );
+			xQueueSend( *(((button_task_config *)pvParameters)->queue), ( void * ) &data, ( TickType_t ) BUTTON_TICKS_WAIT_ON_EVENT );
 			prev_state = PIN_IS_LOW;
 		}else{
 			
 		}
-		vTaskDelay(25);
+		vTaskDelay(BUTTON_TASK_DELAY);
 	}
 		
 	

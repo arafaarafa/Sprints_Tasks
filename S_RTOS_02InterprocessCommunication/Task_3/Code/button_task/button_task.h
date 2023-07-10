@@ -7,7 +7,8 @@
 #include "semphr.h"
 #include "common.h"
 
-
+#define BUTTON_TASK_DELAY                    25
+#define BUTTON_TICKS_WAIT_ON_EVENT           25
 /* configration struct to config the task with wanted pin to toggle and its duration*/
 typedef struct{
     sender_id id;

@@ -76,7 +76,9 @@
 /* Constants for the ComTest demo application tasks. */
 #define mainCOM_TEST_BAUD_RATE	( ( unsigned long ) 115200 )
 
-
+/*---------------------------------------------------------*/
+#define TASK_1_DELAY					100
+#define TASK_2_DELAY					500
 
 
 /*
@@ -109,12 +111,12 @@ int main( void )
 	serial_mutex =  xSemaphoreCreateMutex();
 	
 	serial_task_1_cfg.data = (char *)"hello_from_serial_1";
-	serial_task_1_cfg.delay = 100;
+	serial_task_1_cfg.delay = TASK_1_DELAY;
 	serial_task_1_cfg.mutex = &serial_mutex;
 	
 	
 	serial_task_2_cfg.data = (char *)"hello_from_serial_2";
-	serial_task_2_cfg.delay = 500;
+	serial_task_2_cfg.delay = TASK_2_DELAY;
 	serial_task_2_cfg.mutex = &serial_mutex;
 	
 	

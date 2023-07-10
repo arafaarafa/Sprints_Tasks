@@ -89,7 +89,7 @@
  */
 static void prvSetupHardware( void );
 /*-----------------------------------------------------------*/
-
+#define CONSUMER_TASK_DELAY						100
 
 /*-------------------------------------------------*/
 
@@ -134,7 +134,7 @@ int main( void )
 	
 	/*************consumer cfg**************/
 	consumer_task_cfg.id = CONSUMER_TASK;
-	consumer_task_cfg.delay = 100;
+	consumer_task_cfg.delay = CONSUMER_TASK_DELAY;
 	consumer_task_cfg.queue = &xStructQueue;
 	
 	
