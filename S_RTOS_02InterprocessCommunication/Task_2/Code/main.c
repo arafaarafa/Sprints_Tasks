@@ -65,7 +65,8 @@
 /* Peripheral includes. */
 #include "serial.h"
 #include "GPIO.h"
-
+/* Tasks includes*/
+#include "serial_task.h"
 
 /*-----------------------------------------------------------*/
 
@@ -75,7 +76,9 @@
 /* Constants for the ComTest demo application tasks. */
 #define mainCOM_TEST_BAUD_RATE	( ( unsigned long ) 115200 )
 
-
+/*---------------------------------------------------------*/
+#define TASK_1_DELAY					100
+#define TASK_2_DELAY					500
 
 
 /*
@@ -88,6 +91,13 @@ static void prvSetupHardware( void );
 
 
 
+TaskHandle_t serial_task_1_Handler = NULL;
+TaskHandle_t serial_task_2_Handler = NULL;
+
+SemaphoreHandle_t serial_mutex;
+
+serial_task_config serial_task_1_cfg;
+serial_task_config serial_task_2_cfg;
 
 
 
@@ -97,12 +107,46 @@ static void prvSetupHardware( void );
  */
 int main( void )
 {
+	/*global vars*/
+	serial_mutex =  xSemaphoreCreateMutex();
+	
+	serial_task_1_cfg.data = (char *)"hello_from_serial_1";
+	serial_task_1_cfg.delay = TASK_1_DELAY;
+	serial_task_1_cfg.mutex = &serial_mutex;
+	
+	
+	serial_task_2_cfg.data = (char *)"hello_from_serial_2";
+	serial_task_2_cfg.delay = TASK_2_DELAY;
+	serial_task_2_cfg.mutex = &serial_mutex;
+	
+	
+	
+	
 	/* Setup the hardware for use with the Keil demo board. */
 	prvSetupHardware();
-
+	
 										
 									
     /* Create Tasks here */
+	/***************************task_1**************************************/	
+	xTaskCreate(
+                    serial_task,       							/* Function that implements the task. */
+                    "serial_task_1",          						/* Text name for the task. */
+                    configMINIMAL_STACK_SIZE,     /* Stack size in words, not bytes. */
+                    &serial_task_1_cfg,    					/* Parameter passed into the task. */
+                    1,							/* Priority at which the task is created. */
+                    &serial_task_1_Handler );
+										
+										
+										
+	/***************************task_2**************************************/	
+	xTaskCreate(
+                    serial_task,       							/* Function that implements the task. */
+                    "serial_task_1",          						/* Text name for the task. */
+                    configMINIMAL_STACK_SIZE,     /* Stack size in words, not bytes. */
+                    &serial_task_2_cfg,    					/* Parameter passed into the task. */
+                    1,							/* Priority at which the task is created. */
+                    &serial_task_2_Handler );
 
 
 	/* Now all the tasks have been started - start the scheduler.

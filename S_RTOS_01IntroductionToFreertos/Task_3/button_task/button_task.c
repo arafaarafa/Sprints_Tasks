@@ -12,16 +12,16 @@ void button_task(void *pvParameters){
 		if(button_state == PIN_IS_HIGH){
 			
 			while(button_state == PIN_IS_HIGH){
-				vTaskDelay(1000);
+				vTaskDelay(BUTTON_DELAY_TASK_1_SEC);
 				sec_counter++;
 				button_state = GPIO_read(PORT_0, ((button_task_config *)pvParameters)->pin_num);
 			}
-			if(sec_counter>4){
-				*(((button_task_config *)pvParameters)->led_delay)= 100;
-			}else if((sec_counter>2) && (sec_counter<4)){
-				*(((button_task_config *)pvParameters)->led_delay)= 400;
-			}else if(sec_counter<2){
-				*(((button_task_config *)pvParameters)->led_delay)= 0;
+			if(sec_counter > BUTTON_PRESSED_4_SEC){
+				*(((button_task_config *)pvParameters)->led_delay)= DELAY_100;
+			}else if((sec_counter > BUTTON_PRESSED_2_SEC) && (sec_counter < BUTTON_PRESSED_4_SEC)){
+				*(((button_task_config *)pvParameters)->led_delay)= DELAY_400;
+			}else if(sec_counter < BUTTON_PRESSED_2_SEC){
+				*(((button_task_config *)pvParameters)->led_delay)= DELAY_0;
 			}else{
 			
 			}
@@ -29,7 +29,7 @@ void button_task(void *pvParameters){
 			sec_counter = 0;
 			
 		}
-		vTaskDelay(200);
+		vTaskDelay(BUTTON_DELAY_TASK);
 	}
 	
 }
