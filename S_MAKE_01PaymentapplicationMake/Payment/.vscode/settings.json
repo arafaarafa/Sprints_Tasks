@@ -1,0 +1,13 @@
+{ 
+    "json.schemaDownload.enable": true,
+    "triggerTaskOnSave.on": true, 
+    "triggerTaskOnSave.tasks": { 
+        "Lint": [ 
+            "src/*.c", 
+            "inc/*.h"  
+        ] 
+    }, 
+    "files.exclude": {
+        "**/.*": false
+    }
+}
